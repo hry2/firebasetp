@@ -109,7 +109,7 @@ const CircuitBackground = () => {
         );
       })}
 
-      {/* Rendu des lueurs blanches animées (sans filtre lourd, juste du compositing CSS) */}
+      {/* Rendu des lueurs blanches animées */}
       {animatedIndices.map((idx, i) => {
         const p = pcbPaths[idx];
         const dur = 6 + (i % 3) * 3; // Vitesses très ralenties (6s, 9s, 12s)
@@ -128,8 +128,7 @@ const CircuitBackground = () => {
 export default function App() {
   const [started, setStarted] = useState(false);
   const [tab, setTab] = useState('simulation');
-  // eslint-disable-next-line no-unused-vars
-  const [isOnline, setIsOnline] = useState(false);
+  const [isOnline, setIsOnline] = useState(false); 
   
   const [scenarios, setScenarios] = useState(FALLBACK_DATA.scenarios);
   const [quiz, setQuiz] = useState(FALLBACK_DATA.quiz);
@@ -139,6 +138,7 @@ export default function App() {
   const [score, setScore] = useState(0);
   const [feedback, setFeedback] = useState(null);
   const [showScore, setShowScore] = useState(false);
+  const [selectedQuizOption, setSelectedQuizOption] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -158,6 +158,7 @@ export default function App() {
     fetchData();
   }, []);
 
+  // Handler pour la simulation d'email
   const handleAction = (type) => {
     const item = scenarios[currentScenario];
     if (!item) return;
@@ -174,25 +175,43 @@ export default function App() {
     }, 3500);
   };
 
+  // Handler pour le quiz mis à jour avec feedback visuel
   const handleQuiz = async (idx) => {
-    let newScore = score;
-    if (idx === quiz[quizIndex].correct) newScore += 1;
-    setScore(newScore);
+    // Empêcher de cliquer plusieurs fois pendant le délai de réponse
+    if (selectedQuizOption !== null) return;
 
-    if (quizIndex + 1 < quiz.length) {
-      setQuizIndex(quizIndex + 1);
+    const isCorrect = idx === quiz[quizIndex].correct;
+    setSelectedQuizOption(idx);
+
+    let newScore = score;
+    if (isCorrect) {
+      newScore += 1;
+      setScore(newScore);
+      setFeedback({ msg: "✅ Bonne réponse ! Continuez sur cette lancée.", type: 'success' });
     } else {
-      setShowScore(true);
-      if (isOnline) {
-        try {
-          await fetch(`${API_BASE}/api/score`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ score: newScore })
-          });
-        } catch (e) { console.error("Échec de synchronisation du score", e); }
-      }
+      setFeedback({ msg: "❌ Mauvaise réponse. Pas de panique, l'erreur fait grandir !", type: 'error' });
     }
+
+    // Attendre 3 secondes pour laisser le temps de lire le toast et voir la couleur
+    setTimeout(async () => {
+      setSelectedQuizOption(null);
+      setFeedback(null);
+
+      if (quizIndex + 1 < quiz.length) {
+        setQuizIndex((prev) => prev + 1);
+      } else {
+        setShowScore(true);
+        if (isOnline) {
+          try {
+            await fetch(`${API_BASE}/api/score`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ score: newScore })
+            });
+          } catch (e) { console.error("Échec de synchronisation du score", e); }
+        }
+      }
+    }, 3000);
   };
 
   const resetQuiz = () => {
@@ -231,7 +250,7 @@ export default function App() {
   const currentQuizData = quiz[quizIndex] || FALLBACK_DATA.quiz[0];
 
   return (
-    <div className="app-container">
+    <div className="app-container fade-in">
       <header className="header fade-in-header">
         <div className="logo" onClick={() => setStarted(false)} title="Retour à l'accueil">
           🛡️ AntiPhish<span>Lab</span>
@@ -290,14 +309,32 @@ export default function App() {
             {!showScore ? (
               <div className="shimmer-frame">
                 <div className="quiz-card">
-                  {/* Suppression de l'indication "Question n°" comme demandé */}
                   <h3 className="quiz-question quiz-question-no-header">{currentQuizData.q}</h3>
                   <div className="options-grid">
-                    {currentQuizData.options.map((opt, i) => (
-                      <button key={i} className="option-btn" onClick={() => handleQuiz(i)}>
-                        {opt}
-                      </button>
-                    ))}
+                    {currentQuizData.options.map((opt, i) => {
+                      // Détermination de la classe CSS pour styliser les options après un clic
+                      let optionClass = "option-btn";
+                      if (selectedQuizOption !== null) {
+                        if (i === currentQuizData.correct) {
+                          optionClass += " correct-option"; // Met en vert la bonne réponse
+                        } else if (i === selectedQuizOption) {
+                          optionClass += " wrong-option"; // Met en rouge la mauvaise réponse choisie
+                        } else {
+                          optionClass += " disabled-option"; // Grise les autres
+                        }
+                      }
+
+                      return (
+                        <button 
+                          key={i} 
+                          className={optionClass} 
+                          onClick={() => handleQuiz(i)}
+                          disabled={selectedQuizOption !== null}
+                        >
+                          {opt}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
