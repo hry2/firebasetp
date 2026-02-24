@@ -68,3 +68,7 @@ node_modules/
 # dataconnect generated files
 .dataconnect
 ~.docx
+**/node_modules/
+.firebase/
+.env
+.DS_Store
