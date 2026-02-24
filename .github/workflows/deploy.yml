@@ -1,33 +1,72 @@
-name: Deploy Firebase Hosting
+name: Deploy (Firebase Hosting + Cloud Run API)
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-  deploy:
+  deploy-hosting:
+    name: Deploy Firebase Hosting (React)
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
 
-      - name: Install dependencies
+      - name: Install & Build React
+        working-directory: app
         run: |
-          cd app
           npm ci
-
-      - name: Build React
-        run: |
-          cd app
           npm run build
 
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
-      - name: Deploy to Firebase
+      - name: Deploy to Firebase Hosting
         run: firebase deploy --only hosting --project webapp-98670 --token "${{ secrets.FIREBASE_TOKEN }}"
+
+  deploy-api:
+    name: Deploy API to Cloud Run
+    runs-on: ubuntu-latest
+    needs: deploy-hosting
+
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Auth to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: "${{ secrets.GOOGLECLOUDRUNKEY }}"
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: webapp-98670
+
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker europe-west1-docker.pkg.dev --quiet
+
+      - name: Build API image
+        run: |
+          docker build -f Dockerfile.api \
+            -t europe-west1-docker.pkg.dev/webapp-98670/antiphish/api:latest \
+            .
+
+      - name: Push API image
+        run: docker push europe-west1-docker.pkg.dev/webapp-98670/antiphish/api:latest
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy antiphish-api \
+            --image europe-west1-docker.pkg.dev/webapp-98670/antiphish/api:latest \
+            --region europe-west1 \
+            --platform managed \
+            --allow-unauthenticated \
+            --port 3000
