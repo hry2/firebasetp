@@ -2,12 +2,12 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>ALERTE SYSTÈME - ACCÈS NON AUTORISÉ</title>
+    <title>ATTENTION : VOS DONNÉES SONT CRYPTÉES !</title>
     <style>
         body {
-            background-color: #000;
-            color: #0f0;
-            font-family: 'Courier New', Courier, monospace;
+            background-color: #1a1a1a; /* Fond très sombre */
+            color: #e0e0e0; /* Texte gris clair pour le contraste */
+            font-family: 'Arial', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -15,108 +15,170 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
-            text-transform: uppercase;
-        }
-
-        #terminal {
-            width: 80%;
-            max-width: 800px;
-        }
-
-        .typing {
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 3px solid #0f0;
-            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-            margin-bottom: 10px;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #0f0; }
-        }
-
-        .progress-container {
-            width: 100%;
-            border: 1px solid #0f0;
-            height: 30px;
-            margin-top: 20px;
-            display: none;
-        }
-
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background-color: #0f0;
-            animation: load 8s forwards;
-        }
-
-        @keyframes load {
-            0% { width: 0%; }
-            20% { width: 30%; }
-            50% { width: 70%; }
-            90% { width: 99%; }
-            100% { width: 99%; } /* Bloqué à 99% pour le suspense */
-        }
-
-        #warning {
-            display: none;
-            color: #f00;
-            font-size: 2rem;
             text-align: center;
-            animation: flash 0.5s infinite;
-            margin-top: 20px;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        @keyframes flash {
-            50% { opacity: 0; }
+        .container {
+            background-color: #222; /* Conteneur légèrement plus clair que le fond */
+            border: 5px solid #ff0000; /* Bordure rouge pour l'urgence */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.7); /* Ombre rougeoyer */
+            max-width: 700px;
+            width: 90%;
+            animation: pulse-border 1.5s infinite alternate; /* Animation de la bordure */
         }
 
-        .joke-message {
-            display: none;
-            color: #0af;
-            font-size: 1.5rem;
-            margin-top: 20px;
+        @keyframes pulse-border {
+            from { border-color: #ff0000; box-shadow: 0 0 30px rgba(255, 0, 0, 0.7); }
+            to { border-color: #cc0000; box-shadow: 0 0 40px rgba(255, 0, 0, 0.9); }
+        }
+
+        h1 {
+            color: #ff0000; /* Titre rouge vif */
+            font-size: 2.8em;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            animation: blink-text 1s infinite; /* Texte qui clignote */
+        }
+
+        @keyframes blink-text {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .amount {
+            color: #00ff00; /* Somme en vert pour le contraste et la mise en évidence */
+            font-size: 1.8em;
+            font-weight: bold;
+            margin: 30px 0;
+            display: block;
+        }
+
+        .action-button {
+            background-color: #ff0000; /* Bouton rouge urgent */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.3em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-decoration: none; /* Important pour enlever le style de lien si c'était un <a> */
+            display: inline-block; /* Pour que le padding fonctionne bien */
+        }
+
+        .action-button:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
+        }
+
+        .timer {
+            font-size: 1.5em;
+            margin-top: 25px;
+            color: #ffa500; /* Orange pour le compte à rebours */
+            font-weight: bold;
+        }
+
+        #joke-message {
+            display: none; /* Caché par défaut */
+            position: fixed; /* Par-dessus tout le reste */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); /* Fond sombre semi-transparent */
+            color: #00ff00; /* Message de blague en vert */
+            font-size: 4em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+            cursor: pointer; /* Indique qu'on peut cliquer pour le faire disparaître */
+            text-transform: none; /* Pour que le message de blague ne soit pas en majuscules */
+        }
+
+        #joke-message span {
+            animation: zoom-in-out 2s infinite alternate; /* Effet de zoom sur le message de blague */
+        }
+
+        @keyframes zoom-in-out {
+            from { transform: scale(0.9); opacity: 0.8; }
+            to { transform: scale(1.1); opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-    <div id="terminal">
-        <div class="typing">Connecting to root@system_internal...</div>
-        <div class="typing" style="animation-delay: 2s;">Bypassing firewall... OK</div>
-        <div class="typing" style="animation-delay: 4s;">Downloading folder: "Documents_Confidentiels"...</div>
+    <div class="container" id="ransom-screen">
+        <h1>Attention : Vos fichiers sont cryptés !</h1>
+        <p>Vos documents, photos, bases de données et autres fichiers importants ont été chiffrés. Il n'y a aucun moyen de récupérer vos données sans la clé de décryptage unique.</p>
+        <p>Pour récupérer l'accès à vos fichiers, vous devez régler une rançon.</p>
+        <span class="amount">Montant de la rançon : 10 000 €</span>
+        <p>Le paiement doit être effectué dans les <span class="timer" id="timer"></span> heures. Passé ce délai, vos fichiers seront définitivement effacés.</p>
+        <button class="action-button" onclick="revealJoke()">Cliquez ici pour régler la rançon</button>
+        <p style="margin-top: 25px; font-size: 0.9em; color: #aaa;">Ne tentez pas d'éteindre votre ordinateur ou de débrancher. Cela pourrait endommager vos fichiers de façon irréversible.</p>
     </div>
 
-    <div class="progress-container" id="p-container">
-        <div class="progress-bar"></div>
-    </div>
-
-    <div id="warning">⚠️ ERREUR CRITIQUE : DISQUE DUR EFFACÉ ⚠️</div>
-    
-    <div class="joke-message" id="joke">
-        Mais non it is a joke 😉! <br> 
+    <div id="joke-message">
+        <span>C'EST UNE BLAGUE !</span>
+        <br>
+        <span style="font-size: 0.5em; display: block; margin-top: 20px;">Pense à verrouiller ta session la prochaine fois ! 😉</span>
     </div>
 
     <script>
-        // Affichage progressif des éléments
-        setTimeout(() => {
-            document.getElementById('p-container').style.display = 'block';
-        }, 5000);
+        const jokeMessage = document.getElementById('joke-message');
+        const ransomScreen = document.getElementById('ransom-screen');
+        const timerDisplay = document.getElementById('timer');
 
-        setTimeout(() => {
-            document.getElementById('warning').style.display = 'block';
-        }, 13000);
+        // Fonction pour le compte à rebours
+        function startTimer(durationInHours) {
+            let timer = durationInHours * 3600; // Convertir en secondes
+            const interval = setInterval(() => {
+                const hours = Math.floor(timer / 3600);
+                const minutes = Math.floor((timer % 3600) / 60);
+                const seconds = timer % 60;
 
-        setTimeout(() => {
-            document.getElementById('warning').style.display = 'none';
-            document.getElementById('joke').style.display = 'block';
-        }, 17000);
+                timerDisplay.textContent = 
+                    `${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}m ${seconds.toString().padStart(2, '0')}s`;
+
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    timerDisplay.textContent = "TEMPS ÉCOULÉ !";
+                    // Ici on pourrait ajouter un effet si le temps est écoulé
+                }
+            }, 1000);
+        }
+
+        // Démarrer le compte à rebours (par exemple, 24 heures)
+        startTimer(24); // Rançongiciel avec un délai de 24 heures
+
+        function revealJoke() {
+            ransomScreen.style.display = 'none'; // Cache l'écran de rançon
+            jokeMessage.style.display = 'flex';   // Affiche le message de blague
+
+            // Optionnel : faire disparaître le message de blague après quelques secondes
+            setTimeout(() => {
+                jokeMessage.style.display = 'none';
+                ransomScreen.style.display = 'flex'; // Remettre l'écran de rançon si besoin, ou laisser vide
+            }, 5000); // Le message de blague disparaît après 5 secondes
+        }
+
+        // Pour faire disparaître le message de blague si l'utilisateur clique dessus
+        jokeMessage.addEventListener('click', () => {
+            jokeMessage.style.display = 'none';
+            ransomScreen.style.display = 'flex'; // Optionnel: pour revenir à l'écran de rançon
+        });
     </script>
 </body>
 </html>
