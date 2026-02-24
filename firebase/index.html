@@ -2,183 +2,185 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>ATTENTION : VOS DONNÉES SONT CRYPTÉES !</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALERTE SYSTÈME - ACCÈS BLOQUÉ</title>
     <style>
+        /* Style Global */
         body {
-            background-color: #1a1a1a; /* Fond très sombre */
-            color: #e0e0e0; /* Texte gris clair pour le contraste */
-            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            margin: 0;
             overflow: hidden;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
         }
 
-        .container {
-            background-color: #222; /* Conteneur légèrement plus clair que le fond */
-            border: 5px solid #ff0000; /* Bordure rouge pour l'urgence */
+        /* Écran de Rançon */
+        #ransom-screen {
+            background-color: #1a0000; /* Rouge très sombre */
+            border: 4px solid #ff0000;
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.7); /* Ombre rougeoyer */
-            max-width: 700px;
-            width: 90%;
-            animation: pulse-border 1.5s infinite alternate; /* Animation de la bordure */
-        }
-
-        @keyframes pulse-border {
-            from { border-color: #ff0000; box-shadow: 0 0 30px rgba(255, 0, 0, 0.7); }
-            to { border-color: #cc0000; box-shadow: 0 0 40px rgba(255, 0, 0, 0.9); }
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         h1 {
-            color: #ff0000; /* Titre rouge vif */
-            font-size: 2.8em;
-            margin-bottom: 25px;
+            color: #ff0000;
+            font-size: 2.5rem;
+            margin: 0;
             text-transform: uppercase;
-            animation: blink-text 1s infinite; /* Texte qui clignote */
+            animation: shake 0.5s infinite;
         }
 
-        @keyframes blink-text {
-            0% { opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { opacity: 1; }
+        .warning-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
         }
 
         p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #cccccc;
         }
 
-        .amount {
-            color: #00ff00; /* Somme en vert pour le contraste et la mise en évidence */
-            font-size: 1.8em;
+        .price {
+            font-size: 2rem;
+            color: #00ff00;
             font-weight: bold;
-            margin: 30px 0;
-            display: block;
-        }
-
-        .action-button {
-            background-color: #ff0000; /* Bouton rouge urgent */
-            color: white;
-            padding: 15px 30px;
-            border: none;
+            background: #222;
+            padding: 10px;
             border-radius: 5px;
-            font-size: 1.3em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            text-decoration: none; /* Important pour enlever le style de lien si c'était un <a> */
-            display: inline-block; /* Pour que le padding fonctionne bien */
+            border: 1px dashed #00ff00;
         }
 
-        .action-button:hover {
+        .timer-box {
+            font-size: 1.5rem;
+            color: #ffcc00;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* Bouton */
+        .pay-button {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .pay-button:hover {
             background-color: #cc0000;
             transform: scale(1.05);
         }
 
-        .timer {
-            font-size: 1.5em;
-            margin-top: 25px;
-            color: #ffa500; /* Orange pour le compte à rebours */
-            font-weight: bold;
-        }
-
+        /* Écran de Blague (Caché par défaut) */
         #joke-message {
-            display: none; /* Caché par défaut */
-            position: fixed; /* Par-dessus tout le reste */
+            display: none; /* Changé par JS */
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95); /* Fond sombre semi-transparent */
-            color: #00ff00; /* Message de blague en vert */
-            font-size: 4em;
-            font-weight: bold;
-            display: flex;
+            width: 100vw;
+            height: 100vh;
+            background-color: #000; /* Noir total pour masquer le reste */
+            color: #00ff00;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
-            cursor: pointer; /* Indique qu'on peut cliquer pour le faire disparaître */
-            text-transform: none; /* Pour que le message de blague ne soit pas en majuscules */
+            z-index: 9999;
+            text-align: center;
         }
 
-        #joke-message span {
-            animation: zoom-in-out 2s infinite alternate; /* Effet de zoom sur le message de blague */
+        .joke-text {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 0 0 20px #00ff00;
+            animation: pulse 1.5s infinite;
         }
 
-        @keyframes zoom-in-out {
-            from { transform: scale(0.9); opacity: 0.8; }
-            to { transform: scale(1.1); opacity: 1; }
+        .instruction {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #00ccff;
+        }
+
+        /* Animations */
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            50% { transform: translate(-1px, 2px) rotate(1deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container" id="ransom-screen">
-        <h1>Attention : Vos fichiers sont cryptés !</h1>
-        <p>Vos documents, photos, bases de données et autres fichiers importants ont été chiffrés. Il n'y a aucun moyen de récupérer vos données sans la clé de décryptage unique.</p>
-        <p>Pour récupérer l'accès à vos fichiers, vous devez régler une rançon.</p>
-        <span class="amount">Montant de la rançon : 10 000 €</span>
-        <p>Le paiement doit être effectué dans les <span class="timer" id="timer"></span> heures. Passé ce délai, vos fichiers seront définitivement effacés.</p>
-        <button class="action-button" onclick="revealJoke()">Cliquez ici pour régler la rançon</button>
-        <p style="margin-top: 25px; font-size: 0.9em; color: #aaa;">Ne tentez pas d'éteindre votre ordinateur ou de débrancher. Cela pourrait endommager vos fichiers de façon irréversible.</p>
+    <div id="ransom-screen">
+        <div class="warning-icon">⚠️</div>
+        <h1>VOS DONNÉES SONT CHIFFRÉES</h1>
+        <p>
+            Une vulnérabilité critique a été exploitée sur votre système. <br>
+            Toutes vos photos, documents et bases de données sont désormais inaccessibles.
+        </p>
+        <div class="price">MONTANT À RÉGLER : 10 000 €</div>
+        <div class="timer-box">
+            Temps restant avant suppression : <span id="timer">23:59:59</span>
+        </div>
+        <button class="pay-button" onclick="revealJoke()">Cliquer ici pour payer la rançon</button>
+        <p style="font-size: 0.8rem; color: #666;">
+            Note : Toute tentative de redémarrage entraînera la perte immédiate des clés de décryptage.
+        </p>
     </div>
 
     <div id="joke-message">
-        <span>C'EST UNE BLAGUE !</span>
-        <br>
-        <span style="font-size: 0.5em; display: block; margin-top: 20px;">Pense à verrouiller ta session la prochaine fois ! 😉</span>
+        <div class="joke-text">C'EST UNE BLAGUE ! 😂</div>
+        <div class="instruction">
+            Mais n'oublie pas de verrouiller ta session la prochaine fois ! <br>
+            <small style="color: gray; font-size: 0.9rem;">(Appuie sur F11 pour quitter le plein écran)</small>
+        </div>
+        <button onclick="window.location.reload()" style="margin-top: 40px; background: transparent; border: 1px solid #00ff00; color: #00ff00; cursor: pointer; padding: 10px;">Recommencer la farce</button>
     </div>
 
     <script>
-        const jokeMessage = document.getElementById('joke-message');
-        const ransomScreen = document.getElementById('ransom-screen');
-        const timerDisplay = document.getElementById('timer');
-
-        // Fonction pour le compte à rebours
-        function startTimer(durationInHours) {
-            let timer = durationInHours * 3600; // Convertir en secondes
-            const interval = setInterval(() => {
-                const hours = Math.floor(timer / 3600);
-                const minutes = Math.floor((timer % 3600) / 60);
-                const seconds = timer % 60;
-
-                timerDisplay.textContent = 
-                    `${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}m ${seconds.toString().padStart(2, '0')}s`;
-
-                if (--timer < 0) {
-                    clearInterval(interval);
-                    timerDisplay.textContent = "TEMPS ÉCOULÉ !";
-                    // Ici on pourrait ajouter un effet si le temps est écoulé
-                }
-            }, 1000);
+        // Gestion du Timer (décompte fictif)
+        let seconds = 24 * 3600;
+        function updateTimer() {
+            const h = Math.floor(seconds / 3600);
+            const m = Math.floor((seconds % 3600) / 60);
+            const s = seconds % 60;
+            document.getElementById('timer').innerText = 
+                `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+            seconds--;
         }
+        setInterval(updateTimer, 1000);
 
-        // Démarrer le compte à rebours (par exemple, 24 heures)
-        startTimer(24); // Rançongiciel avec un délai de 24 heures
-
+        // La fonction qui fait basculer les écrans
         function revealJoke() {
-            ransomScreen.style.display = 'none'; // Cache l'écran de rançon
-            jokeMessage.style.display = 'flex';   // Affiche le message de blague
-
-            // Optionnel : faire disparaître le message de blague après quelques secondes
-            setTimeout(() => {
-                jokeMessage.style.display = 'none';
-                ransomScreen.style.display = 'flex'; // Remettre l'écran de rançon si besoin, ou laisser vide
-            }, 5000); // Le message de blague disparaît après 5 secondes
+            // Masque l'écran de rançon
+            document.getElementById('ransom-screen').style.display = 'none';
+            
+            // Affiche l'écran de blague en mode flex
+            const joke = document.getElementById('joke-message');
+            joke.style.display = 'flex';
         }
-
-        // Pour faire disparaître le message de blague si l'utilisateur clique dessus
-        jokeMessage.addEventListener('click', () => {
-            jokeMessage.style.display = 'none';
-            ransomScreen.style.display = 'flex'; // Optionnel: pour revenir à l'écran de rançon
-        });
     </script>
 </body>
 </html>
