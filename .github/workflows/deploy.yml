@@ -11,21 +11,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Build Docker image
-      - name: Build Docker image
-        run: docker build -t anti-phishing-app .
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
-      # Extract dist from container
-      - name: Extract build
+      - name: Install dependencies
         run: |
-          docker create --name temp-container anti-phishing-app
-          docker cp temp-container:/output/dist ./app/dist
-          docker rm temp-container
+          cd app
+          npm ci
 
-      # Install Firebase CLI
-      - name: Install Firebase
+      - name: Build React
+        run: |
+          cd app
+          npm run build
+
+      - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
-      # Deploy
       - name: Deploy to Firebase
         run: firebase deploy --only hosting --project webapp-98670 --token "${{ secrets.FIREBASE_TOKEN }}"
