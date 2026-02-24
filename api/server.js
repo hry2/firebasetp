@@ -2416,8 +2416,16 @@ const quiz = [
   { q: "Qu'est-ce qu'un 'Spyware' ?", options: ["Un logiciel espion qui collecte vos informations à votre insu", "Un appareil photo discret", "Un logiciel antivirus"], correct: 0 }
 ];
 
+// Route racine (évite "Cannot GET /")
+app.get("/", (_req, res) => {
+  res
+    .status(200)
+    .type("text")
+    .send("✅ AntiPhish API OK — endpoints: /api/health /api/scenarios /api/quiz");
+});
+
 /* ======================================================
-   🔀 Fisher-Yates Shuffle (vraie randomisation propre)
+   🔀 Fisher-Yates Shuffle (randomisation propre)
 ====================================================== */
 function shuffle(array) {
   const arr = [...array];
@@ -2506,16 +2514,6 @@ app.post('/api/score', (req, res) => {
   res.json({ received: score, stored: false });
 });
 
-app.get("/", (_req, res) => {
-  res.json({
-    message: "AntiPhish API is running",
-    endpoints: [
-      "/api/health",
-      "/api/scenarios",
-      "/api/quiz"
-    ]
-  });
-});
 
 /* ======================================================
    🚀 START SERVER
