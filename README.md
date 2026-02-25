@@ -206,10 +206,14 @@ Chaque `git push` sur `main` déclenche :
 
 
 ---
-
+### Points d’attention
+App web conçue dans le cadre du tp. Pour aller plus loin il faut bien avoir à l'esprit :
+- Backend sans base de données ni authentification: adapté démo/formation, pas production.
+- CORS ouvert à toutes origines.
+- Très gros volume de données **statiques** dans server.js (maintenabilité/perf de chargement). Donc envisager l'ajout d'un service de base de données
 
 ## 👨‍💻 Auteur
 
 **Harry AKPABIE**  
 
-Docker • Cloud • DevOps • Cybersécurité
+Docker • Cloud • DevOps • Cybersécurité  

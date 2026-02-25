@@ -13,7 +13,7 @@ const scenarios = [
     type: 'phishing', 
     title: 'Mondial Relay - Colis en attente', 
     sender: 'noreply@mondial-relay-securite.com', 
-    content: 'Votre colis n°4429 est bloqué. Payez 1.99€ de frais de douane pour débloquer la livraison.', 
+    content: 'Votre colis n°4429 est bloqué. Payez 1.99? de frais de douane pour débloquer la livraison.', 
     clues: ['Expéditeur suspect', 'Urgence créée', 'Lien non officiel'], 
     feedback: 'Bien joué ! Un vrai mail proviendrait de mondialrelay.fr.' 
   },
@@ -24,16 +24,16 @@ const scenarios = [
     sender: 'confirmation@amazon.fr', 
     content: 'Merci pour votre achat. Retrouvez le récapitulatif dans votre espace client.', 
     clues: ['Domaine officiel', 'Pas de demande de paiement directe'], 
-    feedback: 'Exact. C’est un message transactionnel classique.' 
+    feedback: 'Exact. C?est un message transactionnel classique.' 
   },
   { 
     id: 3, 
     type: 'phishing', 
     title: 'Ameli - Remboursement', 
     sender: 'service@ameli-info-france.net', 
-    content: 'Un nouveau remboursement de 145.00€ est disponible. Cliquez ici pour mettre à jour vos coordonnées bancaires.', 
+    content: 'Un nouveau remboursement de 145.00? est disponible. Cliquez ici pour mettre à jour vos coordonnées bancaires.', 
     clues: ['Demande de RIB par mail', 'Lien .net au lieu de .fr'], 
-    feedback: 'Correct ! L’Assurance Maladie ne demande jamais de coordonnées bancaires par email.' 
+    feedback: 'Correct ! L?Assurance Maladie ne demande jamais de coordonnées bancaires par email.' 
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const scenarios = [
     sender: 'support@netfIix-billing.com',
     content: 'Votre dernier paiement a échoué. Votre abonnement sera suspendu dans 24h. Mettez à jour votre carte bancaire ici.',
     clues: ['Domaine typosquatté (i majuscule au lieu de l)', 'Pression temporelle (24h)'],
-    feedback: 'Bien vu ! Le domaine netfIix est une technique courante pour tromper l’œil.'
+    feedback: 'Bien vu ! Le domaine netfIix est une technique courante pour tromper l??il.'
   },
   {
     id: 5,
@@ -58,7 +58,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Chronopost - Reprogrammation de livraison',
     sender: 'livraison@chrono-post-tracking.fr',
-    content: 'Nous n\'avons pas pu livrer votre colis. Des frais de reprogrammation de 2.95€ s\'appliquent.',
+    content: 'Nous n\'avons pas pu livrer votre colis. Des frais de reprogrammation de 2.95? s\'appliquent.',
     clues: ['Frais cachés demandés', 'Domaine non officiel avec tirets'],
     feedback: 'Excellent. Chronopost ou La Poste ne demandent jamais de payer pour reprogrammer une livraison.'
   },
@@ -67,7 +67,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Impôts - Remboursement en votre faveur',
     sender: 'dgfip@finances-gouv-fr.org',
-    content: 'Suite à un recalcul, vous êtes éligible à un remboursement de 214,00 €. Remplissez le formulaire de versement.',
+    content: 'Suite à un recalcul, vous êtes éligible à un remboursement de 214,00 ?. Remplissez le formulaire de versement.',
     clues: ['Fausse extension (.org au lieu de .gouv.fr)', 'Promesse d\'argent inattendu'],
     feedback: 'Bravo. Le fisc français utilise exclusivement des adresses se terminant par @dgfip.finances.gouv.fr.'
   },
@@ -85,7 +85,7 @@ const scenarios = [
     type: 'phishing',
     title: 'ANTAI - Avis de contravention',
     sender: 'amendes@antai-gouv-dossier.fr',
-    content: 'Vous avez une infraction impayée de 35€. Majoration à 135€ dans 48h. Payez maintenant.',
+    content: 'Vous avez une infraction impayée de 35?. Majoration à 135? dans 48h. Payez maintenant.',
     clues: ['Menace de majoration immédiate', 'Faux domaine gouvernemental'],
     feedback: 'Bien joué. Les vrais avis de contravention se paient uniquement sur amendes.gouv.fr.'
   },
@@ -94,7 +94,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Mon Compte Formation (CPF) - Droits expirés',
     sender: 'contact@cpf-france-droits.fr',
-    content: 'Vos 1500€ de droits à la formation expirent ce soir. Convertissez-les immédiatement ici.',
+    content: 'Vos 1500? de droits à la formation expirent ce soir. Convertissez-les immédiatement ici.',
     clues: ['Urgence irréaliste ("ce soir")', 'Arnaque connue'],
     feedback: 'Exact. C\'est une arnaque au CPF très répandue. Les droits ne disparaissent pas soudainement.'
   },
@@ -130,7 +130,7 @@ const scenarios = [
     type: 'legit',
     title: 'EDF - Votre facture est disponible',
     sender: 'facture@client.edf.fr',
-    content: 'Votre facture d\'un montant de 45.20€ est disponible. Elle sera prélevée le 15 du mois.',
+    content: 'Votre facture d\'un montant de 45.20? est disponible. Elle sera prélevée le 15 du mois.',
     clues: ['Montant précis', 'Information de prélèvement (pas de demande de paiement)'],
     feedback: 'Exact ! EDF informe du prélèvement à venir sans demander de payer immédiatement via un lien.'
   },
@@ -157,7 +157,7 @@ const scenarios = [
     type: 'phishing',
     title: 'PayPal - Activité suspecte',
     sender: 'security@paypaI-support.com',
-    content: 'Nous avons détecté un achat de 899.00€ chez Apple. Cliquez ici pour annuler la transaction.',
+    content: 'Nous avons détecté un achat de 899.00? chez Apple. Cliquez ici pour annuler la transaction.',
     clues: ['Faux montant élevé pour créer la panique', 'Typosquatting (paypaI)'],
     feedback: 'C\'est une arnaque classique pour vous faire paniquer et voler vos accès PayPal.'
   },
@@ -166,7 +166,7 @@ const scenarios = [
     type: 'legit',
     title: 'Apple - Reçu de votre abonnement',
     sender: 'no_reply@email.apple.com',
-    content: 'Facture pour votre abonnement iCloud+ 50 Go (0,99 €/mois). Cet abonnement se renouvellera automatiquement.',
+    content: 'Facture pour votre abonnement iCloud+ 50 Go (0,99 ?/mois). Cet abonnement se renouvellera automatiquement.',
     clues: ['Expéditeur officiel', 'Petit montant cohérent', 'Aucun bouton d\'action urgent'],
     feedback: 'Vrai reçu Apple. Il n\'y a aucune pression pour cliquer sur un lien.'
   },
@@ -175,7 +175,7 @@ const scenarios = [
     type: 'phishing',
     title: 'La Poste - Colis affranchi',
     sender: 'noreply@laposte-suivi-france.net',
-    content: 'Votre facteur n\'a pas pu déposer le colis dans votre boîte aux lettres. Réglez 1.50€ d\'affranchissement.',
+    content: 'Votre facteur n\'a pas pu déposer le colis dans votre boîte aux lettres. Réglez 1.50? d\'affranchissement.',
     clues: ['Demande de paiement par carte', 'Extension de domaine .net suspecte'],
     feedback: 'Exact. La Poste ne vous demandera jamais de payer un supplément par email.'
   },
@@ -202,7 +202,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Vinted - Article vendu !',
     sender: 'ventes@vinted-payement.com',
-    content: 'Félicitations, un acheteur a payé 45€. Cliquez ici pour recevoir les fonds sur votre carte bancaire.',
+    content: 'Félicitations, un acheteur a payé 45?. Cliquez ici pour recevoir les fonds sur votre carte bancaire.',
     clues: ['Fausse procédure Vinted', 'Demande de carte bancaire pour recevoir de l\'argent'],
     feedback: 'Arnaque très courante ! Sur Vinted, l\'argent va dans le porte-monnaie intégré, pas via un lien externe.'
   },
@@ -211,7 +211,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Orange - Erreur de facturation',
     sender: 'facture@orange-clientele.fr',
-    content: 'Nous vous avons facturé deux fois votre abonnement par erreur. Demandez votre remboursement de 34,99€ ici.',
+    content: 'Nous vous avons facturé deux fois votre abonnement par erreur. Demandez votre remboursement de 34,99? ici.',
     clues: ['Promesse de remboursement', 'Lien qui demandera les numéros de carte bleue'],
     feedback: 'Bien vu ! Les opérateurs recréditent automatiquement sur la facture suivante en cas d\'erreur.'
   },
@@ -220,7 +220,7 @@ const scenarios = [
     type: 'legit',
     title: 'Free - Votre facture mobile',
     sender: 'freemobile@free-mobile.fr',
-    content: 'Votre facture de ce mois est disponible dans votre Espace Abonné. Montant : 19.99€.',
+    content: 'Votre facture de ce mois est disponible dans votre Espace Abonné. Montant : 19.99?.',
     clues: ['Domaine officiel connu', 'Montant habituel', 'Pas de demande d\'action directe'],
     feedback: 'Facture légitime. L\'expéditeur et la formulation sont standards.'
   },
@@ -229,7 +229,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Leboncoin - Paiement sécurisé bloqué',
     sender: 'securite@leboncoin-transaction.fr',
-    content: 'Un acheteur a bloqué 150€ pour votre annonce. Validez votre identité avec votre carte d\'identité et votre CB pour débloquer les fonds.',
+    content: 'Un acheteur a bloqué 150? pour votre annonce. Validez votre identité avec votre carte d\'identité et votre CB pour débloquer les fonds.',
     clues: ['Demande de CB pour recevoir des fonds', 'Procédure hors plateforme'],
     feedback: 'Le paiement sécurisé Leboncoin se fait entièrement sur leur site ou application.'
   },
@@ -238,7 +238,7 @@ const scenarios = [
     type: 'phishing',
     title: 'URSSAF - Déclaration incomplète',
     sender: 'contact@urssaf-declarations.com',
-    content: 'Votre dernière déclaration contient des erreurs. Une pénalité de 150€ sera appliquée si non corrigée d\'ici 24h.',
+    content: 'Votre dernière déclaration contient des erreurs. Une pénalité de 150? sera appliquée si non corrigée d\'ici 24h.',
     clues: ['Menace financière immédiate', 'Faux domaine (.com au lieu de .fr)'],
     feedback: 'Les communications officielles de l\'URSSAF utilisent l\'extension .fr et n\'imposent pas de délai de 24h.'
   },
@@ -256,7 +256,7 @@ const scenarios = [
     type: 'phishing',
     title: 'DHL - Colis retenu en douane',
     sender: 'customs@dhl-express-eu.net',
-    content: 'Un colis à votre nom est retenu en douane. Veuillez régler la taxe douanière de 3,99€ via notre portail.',
+    content: 'Un colis à votre nom est retenu en douane. Veuillez régler la taxe douanière de 3,99? via notre portail.',
     clues: ['Frais de douane minimes (technique pour voler la CB)', 'Domaine suspect'],
     feedback: 'Typique arnaque au colis. Ne jamais payer de prétendus frais de douane par email.'
   },
@@ -274,7 +274,7 @@ const scenarios = [
     type: 'legit',
     title: 'Spotify - Nouveau mix ajouté',
     sender: 'no-reply@spotify.com',
-    content: 'Votre "Mix Découverte" a été mis à jour avec de nouveaux titres. Écoutez-le dès maintenant !',
+    content: 'Votre "Mix Découverte" a été mis à jour avec de nouveaux titres. ?coutez-le dès maintenant !',
     clues: ['Contenu inoffensif', 'Expéditeur officiel', 'Marketing classique'],
     feedback: 'Email promotionnel légitime et sans risque.'
   },
@@ -321,7 +321,7 @@ const scenarios = [
     sender: 'promo@sncf-cadeaux.fr',
     content: 'Vous avez été tiré au sort ! Répondez à ce sondage de 2 minutes pour gagner votre pass illimité.',
     clues: ['Cadeau trop beau pour être vrai', 'Sondage cachant une demande de frais de port'],
-    feedback: 'Arnaque au faux concours. Le sondage finit toujours par demander 1€ pour "envoyer la carte".'
+    feedback: 'Arnaque au faux concours. Le sondage finit toujours par demander 1? pour "envoyer la carte".'
   },
   {
     id: 36,
@@ -373,7 +373,7 @@ const scenarios = [
     type: 'phishing',
     title: 'URGENT : Confidentiel',
     sender: 'pdg.entreprise@gmail.com',
-    content: 'Je suis en réunion. Fais-moi un virement urgent de 4500€ pour un fournisseur sur ce compte, je te rembourse ce soir. C\'est confidentiel.',
+    content: 'Je suis en réunion. Fais-moi un virement urgent de 4500? pour un fournisseur sur ce compte, je te rembourse ce soir. C\'est confidentiel.',
     clues: ['Demande hors procédure (virement)', 'Caractère urgent et secret', 'Adresse Gmail pour le PDG'],
     feedback: 'C\'est la "Fraude au Président" (FOVI). Toujours vérifier de vive voix ou par un autre canal.'
   },
@@ -418,7 +418,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Lydia - Vous avez reçu de l\'argent !',
     sender: 'cagnotte@lydia-app.net',
-    content: 'Un ami vous a envoyé 30€ ! Entrez vos informations de carte bancaire pour les encaisser.',
+    content: 'Un ami vous a envoyé 30? ! Entrez vos informations de carte bancaire pour les encaisser.',
     clues: ['Fausse réception d\'argent', 'Sur Lydia, l\'argent arrive sur le compte, on ne donne pas sa carte pour le recevoir'],
     feedback: 'Une arnaque très ciblée sur les étudiants et jeunes actifs utilisateurs de cagnottes.'
   },
@@ -427,7 +427,7 @@ const scenarios = [
     type: 'legit',
     title: 'PlayStation - Merci pour votre achat',
     sender: 'sony@email.sonyentertainmentnetwork.com',
-    content: 'Merci d\'avoir acheté "God of War Ragnarök" sur le PlayStation Store. Montant: 79,99€.',
+    content: 'Merci d\'avoir acheté "God of War Ragnarök" sur le PlayStation Store. Montant: 79,99?.',
     clues: ['Achat réel du joueur', 'Domaine à rallonge mais officiel de Sony'],
     feedback: 'Ce domaine très long et complexe est bien le vrai domaine utilisé par Sony pour ses factures.'
   },
@@ -454,7 +454,7 @@ const scenarios = [
     type: 'legit',
     title: 'Uber - Votre course du vendredi matin',
     sender: 'receipts@uber.com',
-    content: 'Voici le reçu de votre course avec Jean. Total : 12,40€.',
+    content: 'Voici le reçu de votre course avec Jean. Total : 12,40?.',
     clues: ['Facture standard', 'Domaine très clair', 'Montant réaliste'],
     feedback: 'Un simple reçu de course après un trajet.'
   },
@@ -463,7 +463,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Uber Eats - Remboursement commande non livrée',
     sender: 'support@ubereats-refund.net',
-    content: 'Nous nous excusons pour la commande non livrée. Cliquez pour recevoir un remboursement intégral de 45€.',
+    content: 'Nous nous excusons pour la commande non livrée. Cliquez pour recevoir un remboursement intégral de 45?.',
     clues: ['Exploite la frustration d\'un service', 'Domaine .net'],
     feedback: 'Si vous n\'avez rien commandé ou déjà été remboursé via l\'app, c\'est pour voler votre carte.'
   },
@@ -481,7 +481,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Boursorama - Clôture de compte imminente',
     sender: 'service-client@boursorama-banque-fr.com',
-    content: 'Suite à l\'inactivité de votre compte, ce dernier sera clôturé avec 450€ dessus. Connectez-vous pour l\'empêcher.',
+    content: 'Suite à l\'inactivité de votre compte, ce dernier sera clôturé avec 450? dessus. Connectez-vous pour l\'empêcher.',
     clues: ['Menace de perte d\'argent', 'Faux domaine imitant le vrai'],
     feedback: 'Une banque ne clôture pas un compte du jour au lendemain par email.'
   },
@@ -490,16 +490,16 @@ const scenarios = [
     type: 'phishing',
     title: 'Engie - Impayé électricité',
     sender: 'recouvrement@engie-urgence.fr',
-    content: 'Dernier avis avant coupure d\'électricité. Payez votre solde de 184,30€ par carte bancaire avant ce soir.',
+    content: 'Dernier avis avant coupure d\'électricité. Payez votre solde de 184,30? par carte bancaire avant ce soir.',
     clues: ['Menace de coupure d\'énergie (illégal sans longue procédure)', 'Paiement direct demandé'],
     feedback: 'Une coupure d\'électricité demande des semaines de préavis officiels par courrier, jamais un mail de 24h.'
   },
   {
     id: 55,
     type: 'legit',
-    title: 'TotalEnergies - Évolution de vos mensualités',
+    title: 'TotalEnergies - ?volution de vos mensualités',
     sender: 'noreply@totalenergies.fr',
-    content: 'Votre consommation a baissé. Vos mensualités passeront à 65€/mois le mois prochain.',
+    content: 'Votre consommation a baissé. Vos mensualités passeront à 65?/mois le mois prochain.',
     clues: ['Bonne nouvelle non conditionnée à un clic', 'Domaine officiel'],
     feedback: 'Ajustement légitime des mensualités.'
   },
@@ -526,9 +526,9 @@ const scenarios = [
     type: 'phishing',
     title: 'Fnac - Vous avez gagné un iPhone 15',
     sender: 'concours@fnac-cadeaux.com',
-    content: 'Suite à votre dernier achat, vous êtes l\'heureux gagnant de notre grand jeu ! Payez juste 2€ de frais de livraison.',
+    content: 'Suite à votre dernier achat, vous êtes l\'heureux gagnant de notre grand jeu ! Payez juste 2? de frais de livraison.',
     clues: ['Cadeau de grande valeur', 'Frais de port dérisoires pour obtenir les numéros de CB'],
-    feedback: 'Le fameux "iPhone à 2€" est l\'une des plus vieilles et rentables arnaques du web.'
+    feedback: 'Le fameux "iPhone à 2?" est l\'une des plus vieilles et rentables arnaques du web.'
   },
   {
     id: 59,
@@ -551,9 +551,9 @@ const scenarios = [
   {
     id: 61,
     type: 'phishing',
-    title: 'Colissimo - Échec de livraison',
+    title: 'Colissimo - ?chec de livraison',
     sender: 'contact@colissimo-suivi-online.com',
-    content: 'Votre colis n°8H3920193 est en attente au centre de tri. Réglez 2.50€ de frais de garde pour planifier la livraison.',
+    content: 'Votre colis n°8H3920193 est en attente au centre de tri. Réglez 2.50? de frais de garde pour planifier la livraison.',
     clues: ['Demande de paiement pour livraison', 'Faux domaine Colissimo'],
     feedback: 'Classique arnaque au colis. La Poste ne demande jamais de régler des frais de garde par email.'
   },
@@ -589,7 +589,7 @@ const scenarios = [
     type: 'phishing',
     title: 'AliExpress - Taxe douanière en attente',
     sender: 'customs@aliexpress-eu-support.com',
-    content: 'Votre commande AE932840 est bloquée en douane. Veuillez payer la TVA de 1,99€ via notre portail sécurisé.',
+    content: 'Votre commande AE932840 est bloquée en douane. Veuillez payer la TVA de 1,99? via notre portail sécurisé.',
     clues: ['Frais de douane minimes', 'Lien vers un portail externe'],
     feedback: 'Les taxes douanières sur AliExpress sont généralement payées lors de la commande (TVA), pas par un mail externe.'
   },
@@ -634,7 +634,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Crédit Mutuel - Virement suspect bloqué',
     sender: 'fraude@creditmutuel-alertes.net',
-    content: 'Nous avons bloqué un virement de 850€ vers l\'Espagne. Cliquez ici si vous n\'êtes pas à l\'origine de cette opération.',
+    content: 'Nous avons bloqué un virement de 850? vers l\'Espagne. Cliquez ici si vous n\'êtes pas à l\'origine de cette opération.',
     clues: ['Création de panique (virement frauduleux)', 'Lien d\'annulation factice'],
     feedback: 'Arnaque au faux conseiller : on vous fait croire à une fraude pour voler vos codes.'
   },
@@ -643,7 +643,7 @@ const scenarios = [
     type: 'legit',
     title: 'Boursorama - Alerte de solde',
     sender: 'alertes@boursorama.com',
-    content: 'Votre solde est passé en dessous du seuil d\'alerte de 100€ que vous aviez configuré. Connectez-vous à votre espace client pour vérifier.',
+    content: 'Votre solde est passé en dessous du seuil d\'alerte de 100? que vous aviez configuré. Connectez-vous à votre espace client pour vérifier.',
     clues: ['Alerte configurée par l\'utilisateur', 'Pas de lien cliquable forcé', 'Domaine officiel'],
     feedback: 'Alerte bancaire légitime.'
   },
@@ -652,7 +652,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Assurance Maladie - Nouvelle carte Vitale',
     sender: 'renouvellement@ameli-vitale-gouv.fr',
-    content: 'La nouvelle carte Vitale V3 est obligatoire. Commandez-la dès maintenant. Les frais d\'expédition sont de 0.99€.',
+    content: 'La nouvelle carte Vitale V3 est obligatoire. Commandez-la dès maintenant. Les frais d\'expédition sont de 0.99?.',
     clues: ['Demande de frais d\'expédition pour la carte Vitale', 'Caractère obligatoire et urgent'],
     feedback: 'La carte Vitale est 100% gratuite. L\'Assurance Maladie ne demande jamais de frais de port.'
   },
@@ -670,16 +670,16 @@ const scenarios = [
     type: 'phishing',
     title: 'Gouvernement.fr - Prime d\'inflation',
     sender: 'aides@ministere-solidarite-gouv.org',
-    content: 'Vous êtes éligible à la nouvelle prime d\'inflation de 250€. Remplissez le formulaire de demande avec votre RIB.',
+    content: 'Vous êtes éligible à la nouvelle prime d\'inflation de 250?. Remplissez le formulaire de demande avec votre RIB.',
     clues: ['Extension .org au lieu de .gouv.fr', 'Promesse de prime inattendue'],
-    feedback: 'Les aides de l\'État sont généralement versées automatiquement ou demandées via des espaces personnels (.gouv.fr).'
+    feedback: 'Les aides de l\'?tat sont généralement versées automatiquement ou demandées via des espaces personnels (.gouv.fr).'
   },
   {
     id: 75,
     type: 'phishing',
     title: 'Info Radars - Avis de contravention',
     sender: 'contact@antai-amendes-gouv.com',
-    content: 'Vous avez été flashé à 95 km/h le 12 mai. Montant de l\'amende : 45€. Payez dans les 3 jours pour éviter la majoration.',
+    content: 'Vous avez été flashé à 95 km/h le 12 mai. Montant de l\'amende : 45?. Payez dans les 3 jours pour éviter la majoration.',
     clues: ['Urgence (3 jours)', 'Faux domaine .com (l\'ANTAI utilise .gouv.fr)'],
     feedback: 'Les vrais avis de contravention sont envoyés par courrier postal et payables sur amendes.gouv.fr.'
   },
@@ -751,7 +751,7 @@ const scenarios = [
     type: 'phishing',
     title: 'WhatsApp - Sauvegarde vocale',
     sender: 'voicemail@whatsapp-web-record.com',
-    content: 'Vous avez reçu un nouveau message vocal (0:45) de +33 6 XX XX XX XX. Écoutez le message en ligne.',
+    content: 'Vous avez reçu un nouveau message vocal (0:45) de +33 6 XX XX XX XX. ?coutez le message en ligne.',
     clues: ['WhatsApp n\'envoie pas de messages vocaux par email', 'Lien malveillant'],
     feedback: 'Les messages WhatsApp restent dans l\'application. C\'est un leurre pour installer un malware.'
   },
@@ -868,7 +868,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Orange - Coupure internet imminente',
     sender: 'service-technique@orange-fibre-assistance.fr',
-    content: 'Suite à un impayé, votre ligne fibre sera coupée dans 2 heures. Réglez la somme de 29.90€ en ligne.',
+    content: 'Suite à un impayé, votre ligne fibre sera coupée dans 2 heures. Réglez la somme de 29.90? en ligne.',
     clues: ['Délai irréaliste (2 heures)', 'Demande de paiement par CB'],
     feedback: 'Les opérateurs respectent des délais légaux avant coupure, ils n\'envoient pas de préavis de 2h.'
   },
@@ -877,7 +877,7 @@ const scenarios = [
     type: 'legit',
     title: 'Bouygues Telecom - Votre facture mensuelle',
     sender: 'facture@bouyguestelecom.fr',
-    content: 'Votre facture Bbox de mai est disponible. Le montant de 34,99€ sera prélevé le 12 du mois.',
+    content: 'Votre facture Bbox de mai est disponible. Le montant de 34,99? sera prélevé le 12 du mois.',
     clues: ['Information de prélèvement', 'Montant standard', 'Domaine officiel'],
     feedback: 'Mail de mise à disposition de facture standard.'
   },
@@ -886,7 +886,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Free - Matériel non restitué',
     sender: 'restitutions@freebox-retours.com',
-    content: 'Vous n\'avez pas restitué votre Freebox suite à votre résiliation. Une pénalité de 400€ sera prélevée sauf si vous payez les frais de retour de 5€ ici.',
+    content: 'Vous n\'avez pas restitué votre Freebox suite à votre résiliation. Une pénalité de 400? sera prélevée sauf si vous payez les frais de retour de 5? ici.',
     clues: ['Pénalité exorbitante pour faire peur', 'Frais de retour suspects'],
     feedback: 'Arnaque jouant sur la peur des pénalités de résiliation.'
   },
@@ -895,7 +895,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Veolia - Fuite d\'eau détectée',
     sender: 'alertes@veolia-eau-services.net',
-    content: 'Une surconsommation anormale a été détectée à votre domicile. Prenez rendez-vous d\'urgence avec un technicien via notre portail (frais de déplacement 15€).',
+    content: 'Une surconsommation anormale a été détectée à votre domicile. Prenez rendez-vous d\'urgence avec un technicien via notre portail (frais de déplacement 15?).',
     clues: ['Frais de déplacement demandés par mail', 'Domaine non officiel'],
     feedback: 'Fausse alerte pour vous faire payer de soi-disant frais de déplacement.'
   },
@@ -913,7 +913,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Apple - Facture App Store',
     sender: 'receipts@apple-store-billing.net',
-    content: 'Reçu pour l\'achat de "Clash of Clans - Gems" : 109,99€. Si vous n\'avez pas autorisé cet achat, annulez la transaction ici.',
+    content: 'Reçu pour l\'achat de "Clash of Clans - Gems" : 109,99?. Si vous n\'avez pas autorisé cet achat, annulez la transaction ici.',
     clues: ['Gros montant inattendu', 'Bouton d\'annulation d\'urgence', 'Domaine frauduleux'],
     feedback: 'Technique courante : envoyer une fausse facture élevée pour inciter la victime à cliquer sur le lien "Annuler".'
   },
@@ -922,7 +922,7 @@ const scenarios = [
     type: 'legit',
     title: 'Zalando - Vos retours ont été traités',
     sender: 'service@zalando.fr',
-    content: 'Nous avons bien reçu votre colis de retour. Le remboursement de 45,00€ a été effectué sur votre compte bancaire ou PayPal.',
+    content: 'Nous avons bien reçu votre colis de retour. Le remboursement de 45,00? a été effectué sur votre compte bancaire ou PayPal.',
     clues: ['Confirmation d\'une action utilisateur', 'Domaine officiel'],
     feedback: 'Email de confirmation de remboursement suite à un retour de marchandise.'
   },
@@ -931,7 +931,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Norton - Renouvellement automatique',
     sender: 'billing@norton-antivirus-renewal.com',
-    content: 'Votre abonnement Norton 360 a été renouvelé pour 299€. Le montant sera prélevé aujourd\'hui. Contactez le +33 9 70 XX XX XX pour contester.',
+    content: 'Votre abonnement Norton 360 a été renouvelé pour 299?. Le montant sera prélevé aujourd\'hui. Contactez le +33 9 70 XX XX XX pour contester.',
     clues: ['Montant exorbitant', 'Incite à appeler un numéro de téléphone (Vishing)', 'Faux domaine'],
     feedback: 'C\'est une arnaque au support technique (Tech Support Scam) par téléphone.'
   },
@@ -940,7 +940,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Mairie de Paris - Vignette Crit\'Air',
     sender: 'contact@certificat-air-gouv.fr',
-    content: 'Votre vignette Crit\'Air est périmée. Les nouvelles vignettes de catégorie 2026 sont obligatoires. Commandez la vôtre pour 3,11€.',
+    content: 'Votre vignette Crit\'Air est périmée. Les nouvelles vignettes de catégorie 2026 sont obligatoires. Commandez la vôtre pour 3,11?.',
     clues: ['La vignette Crit\'Air n\'expire pas', 'Faux domaine gouvernemental'],
     feedback: 'Les vignettes Crit\'Air n\'ont pas de date de validité. Le seul site officiel est certificat-air.gouv.fr.'
   },
@@ -1003,7 +1003,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Santé Publique France - Rappel de vaccin',
     sender: 'vaccination@sante-publique-gouv.net',
-    content: 'Votre dernier rappel de vaccin a expiré. Prenez rendez-vous d\'urgence et réglez les frais de dossier de 2€.',
+    content: 'Votre dernier rappel de vaccin a expiré. Prenez rendez-vous d\'urgence et réglez les frais de dossier de 2?.',
     clues: ['Frais de dossier pour un vaccin', 'Urgence sanitaire feinte'],
     feedback: 'Les campagnes de vaccination officielles en France ne demandent jamais de payer des frais de dossier en ligne.'
   },
@@ -1021,7 +1021,7 @@ const scenarios = [
     type: 'legit',
     title: 'Deliveroo - Votre reçu',
     sender: 'receipts@deliveroo.fr',
-    content: 'Voici le reçu de votre commande chez "Burger House". Total : 22,50€.',
+    content: 'Voici le reçu de votre commande chez "Burger House". Total : 22,50?.',
     clues: ['Domaine officiel', 'Facture post-commande'],
     feedback: 'Reçu classique de livraison de repas.'
   },
@@ -1048,9 +1048,9 @@ const scenarios = [
     type: 'phishing',
     title: 'TotalEnergies - Chèque énergie',
     sender: 'aide@totalenergies-cheque.com',
-    content: 'Utilisez votre chèque énergie de 100€ dès maintenant en renseignant vos identifiants bancaires pour le versement.',
+    content: 'Utilisez votre chèque énergie de 100? dès maintenant en renseignant vos identifiants bancaires pour le versement.',
     clues: ['Le chèque énergie se déduit de la facture, il n\'est pas versé sur un compte bancaire', 'Faux domaine'],
-    feedback: 'L\'utilisation du chèque énergie est encadrée par l\'État (chequeenergie.gouv.fr) et ne demande pas de RIB.'
+    feedback: 'L\'utilisation du chèque énergie est encadrée par l\'?tat (chequeenergie.gouv.fr) et ne demande pas de RIB.'
   },
   {
     id: 117,
@@ -1075,7 +1075,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Leboncoin - Paiement de votre annonce',
     sender: 'transaction@leboncoin-paiement-securise.com',
-    content: 'Félicitations, votre canapé a été payé. Cliquez pour valider l\'expédition et recevoir les 200€.',
+    content: 'Félicitations, votre canapé a été payé. Cliquez pour valider l\'expédition et recevoir les 200?.',
     clues: ['Validation d\'expédition via email', 'Faux domaine de paiement'],
     feedback: 'Le système de paiement sécurisé Leboncoin est intégré au site. Ne cliquez jamais sur des liens externes.'
   },
@@ -1084,7 +1084,7 @@ const scenarios = [
     type: 'phishing',
     title: 'SFR - Erreur de prélèvement',
     sender: 'facturation@sfr-contact-assistance.fr',
-    content: 'Nous n\'avons pas pu prélever votre facture de 15€. Sans paiement manuel sous 24h, votre ligne sera restreinte.',
+    content: 'Nous n\'avons pas pu prélever votre facture de 15?. Sans paiement manuel sous 24h, votre ligne sera restreinte.',
     clues: ['Menace de coupure immédiate', 'Faux domaine SFR'],
     feedback: 'Les relances d\'impayés opérateurs ne menacent pas d\'une coupure sous 24h.'
   },
@@ -1165,7 +1165,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Allocations Familiales - Aide exceptionnelle',
     sender: 'contact@caf-aides-exceptionnelles.fr',
-    content: 'La CAF vous accorde une prime inflation de 150€. Validez vos informations bancaires pour recevoir le virement.',
+    content: 'La CAF vous accorde une prime inflation de 150?. Validez vos informations bancaires pour recevoir le virement.',
     clues: ['Promesse d\'argent', 'Domaine frauduleux'],
     feedback: 'La CAF verse les aides automatiquement sur le compte bancaire déjà renseigné dans votre dossier sécurisé.'
   },
@@ -1201,7 +1201,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Vinci Autoroutes - Télépéage impayé',
     sender: 'service-client@vinci-telepeage-alertes.fr',
-    content: 'Le dernier passage au péage n\'a pas pu être prélevé (3,40€). Votre badge Ulys est désactivé. Réglez le solde ici.',
+    content: 'Le dernier passage au péage n\'a pas pu être prélevé (3,40?). Votre badge Ulys est désactivé. Réglez le solde ici.',
     clues: ['Menace de désactivation du badge', 'Faux domaine Vinci'],
     feedback: 'Les sociétés d\'autoroute gèrent les impayés via l\'espace abonné officiel, pas par des liens de paiement d\'urgence.'
   },
@@ -1255,7 +1255,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Western Union - Virement en attente',
     sender: 'transfert@westernunion-secure-pay.com',
-    content: 'M. Dubois vous a envoyé 500€. Pour retirer les fonds, veuillez payer les frais de dossier internationaux de 15€.',
+    content: 'M. Dubois vous a envoyé 500?. Pour retirer les fonds, veuillez payer les frais de dossier internationaux de 15?.',
     clues: ['Frais de dossier pour récupérer de l\'argent', 'Faux domaine'],
     feedback: 'L\'arnaque "à la nigériane" ou "avance de frais" : payer pour recevoir un faux pactole.'
   },
@@ -1264,7 +1264,7 @@ const scenarios = [
     type: 'phishing',
     title: 'IKEA - Programme IKEA Family',
     sender: 'fidelite@ikea-family-rewards.net',
-    content: 'Vos 1500 points de fidélité expirent ce soir. Convertissez-les en bons d\'achat de 50€ via ce lien.',
+    content: 'Vos 1500 points de fidélité expirent ce soir. Convertissez-les en bons d\'achat de 50? via ce lien.',
     clues: ['Urgence sur les points de fidélité', 'Domaine frauduleux'],
     feedback: 'Les programmes de fidélité sont une cible de choix pour voler des comptes clients existants.'
   },
@@ -1291,7 +1291,7 @@ const scenarios = [
     type: 'phishing',
     title: 'EDF - Erreur de compteur Linky',
     sender: 'technicien@edf-linky-intervention.fr',
-    content: 'Une anomalie de comptage a été signalée sur votre Linky. Vous devez 450€ de régularisation. Payez maintenant pour éviter la coupure.',
+    content: 'Une anomalie de comptage a été signalée sur votre Linky. Vous devez 450? de régularisation. Payez maintenant pour éviter la coupure.',
     clues: ['Menace de coupure suite à une erreur technique inexpliquée', 'Faux domaine'],
     feedback: 'Les régularisations se font sur les factures officielles d\'EDF ou Enedis, avec un échéancier possible, jamais dans l\'urgence par mail.'
   },
@@ -1300,7 +1300,7 @@ const scenarios = [
     type: 'legit',
     title: 'Deliveroo - Vos avantages Deliveroo Plus',
     sender: 'hello@deliveroo.fr',
-    content: 'Rappel de vos avantages : avec Deliveroo Plus, la livraison est offerte sur toutes vos commandes de plus de 12€.',
+    content: 'Rappel de vos avantages : avec Deliveroo Plus, la livraison est offerte sur toutes vos commandes de plus de 12?.',
     clues: ['Communication marketing', 'Domaine officiel'],
     feedback: 'Email commercial légitime récapitulant les avantages d\'un abonnement.'
   },
@@ -1417,7 +1417,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Paylib - Vous avez reçu un paiement',
     sender: 'transfert@paylib-reception.fr',
-    content: 'Un proche vous a envoyé 45€. Pour encaisser ce montant, veuillez sélectionner votre banque et entrer vos identifiants web.',
+    content: 'Un proche vous a envoyé 45?. Pour encaisser ce montant, veuillez sélectionner votre banque et entrer vos identifiants web.',
     clues: ['Demande d\'identifiants bancaires pour RECEVOIR de l\'argent', 'Domaine non officiel'],
     feedback: 'Paylib verse l\'argent directement sur le compte lié au numéro de téléphone, sans demander de se connecter.'
   },
@@ -1426,7 +1426,7 @@ const scenarios = [
     type: 'legit',
     title: 'Benoit (via Lydia) - Remboursement pizza',
     sender: 'hello@lydia-app.com',
-    content: 'Benoit vient de vous payer 12,50 € pour "Pizza hier soir". L\'argent est disponible sur votre solde Lydia.',
+    content: 'Benoit vient de vous payer 12,50 ? pour "Pizza hier soir". L\'argent est disponible sur votre solde Lydia.',
     clues: ['Montant faible et précis', 'Contexte social', 'Domaine officiel'],
     feedback: 'Notification classique de remboursement entre amis.'
   },
@@ -1435,7 +1435,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Télépéage Ulys - Facture impayée',
     sender: 'facturation@ulys-vinci-autoroutes.net',
-    content: 'Votre facture de péage de 34,20€ a été rejetée. Votre badge sera bloqué à la prochaine barrière. Payez immédiatement par carte.',
+    content: 'Votre facture de péage de 34,20? a été rejetée. Votre badge sera bloqué à la prochaine barrière. Payez immédiatement par carte.',
     clues: ['Menace d\'inconvénient fort (blocage au péage)', 'Domaine frauduleux'],
     feedback: 'Les rejets de prélèvement sont gérés dans l\'espace client, pas par des paiements directs par email.'
   },
@@ -1453,7 +1453,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Apple - Votre identifiant a été utilisé pour un achat',
     sender: 'noreply@apple-support-itunes-store.com',
-    content: 'Un achat de 149,99€ (Abonnement Tinder Gold) a été effectué depuis un appareil inconnu. Si ce n\'est pas vous, cliquez ici pour annuler.',
+    content: 'Un achat de 149,99? (Abonnement Tinder Gold) a été effectué depuis un appareil inconnu. Si ce n\'est pas vous, cliquez ici pour annuler.',
     clues: ['Achat fictif pour déclencher la panique', 'Lien d\'annulation qui est une page de phishing'],
     feedback: 'Arnaque courante. Apple ne met pas de lien "Annuler" direct dans ses reçus.'
   },
@@ -1462,7 +1462,7 @@ const scenarios = [
     type: 'legit',
     title: 'Google Play - Confirmation d\'achat',
     sender: 'googleplay-noreply@google.com',
-    content: 'Merci pour votre achat sur Google Play. Application : Minecraft (7,99€).',
+    content: 'Merci pour votre achat sur Google Play. Application : Minecraft (7,99?).',
     clues: ['Montant standard', 'Pas de pression', 'Domaine officiel'],
     feedback: 'Reçu d\'achat d\'application légitime.'
   },
@@ -1489,7 +1489,7 @@ const scenarios = [
     type: 'phishing',
     title: 'DHL Express - Adresse introuvable',
     sender: 'delivery@dhl-express-logistics.net',
-    content: 'Le livreur n\'a pas trouvé votre adresse. Remplissez ce formulaire d\'informations et payez 1.50€ pour une relivraison demain.',
+    content: 'Le livreur n\'a pas trouvé votre adresse. Remplissez ce formulaire d\'informations et payez 1.50? pour une relivraison demain.',
     clues: ['Demande de paiement pour relivraison', 'Domaine non officiel'],
     feedback: 'Une relivraison pour adresse introuvable est gratuite et se gère via le numéro de suivi officiel.'
   },
@@ -1507,7 +1507,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Tesco / Carrefour - Vous avez gagné un chariot de courses !',
     sender: 'gagnant@carrefour-recompenses.com',
-    content: 'Félicitations, vous faites partie des 10 gagnants du jour ! Réclamez votre carte cadeau de 500€ en payant uniquement les frais d\'envoi de 2€.',
+    content: 'Félicitations, vous faites partie des 10 gagnants du jour ! Réclamez votre carte cadeau de 500? en payant uniquement les frais d\'envoi de 2?.',
     clues: ['Promesse de gain disproportionné', 'Demande de frais d\'envoi pour une carte cadeau (qui pourrait être numérique)'],
     feedback: 'Arnaque au faux concours très répandue.'
   },
@@ -1523,9 +1523,9 @@ const scenarios = [
   {
     id: 169,
     type: 'phishing',
-    title: 'Norton 360 - Facture prélevée : 349.99€',
+    title: 'Norton 360 - Facture prélevée : 349.99?',
     sender: 'billing@norton-auto-renew.net',
-    content: 'Votre abonnement a été renouvelé avec succès pour 3 ans (349.99€). Si vous souhaitez annuler, appelez immédiatement notre service client au 09 70 XX XX XX.',
+    content: 'Votre abonnement a été renouvelé avec succès pour 3 ans (349.99?). Si vous souhaitez annuler, appelez immédiatement notre service client au 09 70 XX XX XX.',
     clues: ['Montant abusif pour faire réagir', 'Incite à appeler un numéro (vishing)'],
     feedback: 'L\'arnaque au support technique utilise ces faux reçus pour vous faire appeler un faux centre d\'appels.'
   },
@@ -1577,7 +1577,7 @@ const scenarios = [
   {
     id: 175,
     type: 'phishing',
-    title: 'LinkedIn - Offre d\'emploi : Directeur Marketing (120k€)',
+    title: 'LinkedIn - Offre d\'emploi : Directeur Marketing (120k?)',
     sender: 'recrutement@linkedin-talent-scout.com',
     content: 'Votre profil correspond parfaitement à une offre confidentielle. Téléchargez la fiche de poste jointe (Fiche_Poste.docm) et activez les macros pour la lire.',
     clues: ['Offre très alléchante', 'Fichier .docm (Word avec Macros)', 'Faux domaine LinkedIn'],
@@ -1597,7 +1597,7 @@ const scenarios = [
     type: 'phishing',
     title: 'CAF - Ajustement de vos APL',
     sender: 'dossier@caf-allocations-ajustement.fr',
-    content: 'Vos aides au logement ont été recalculées à la hausse. Pour percevoir le rattrapage de 340€, fournissez une photo de votre carte bancaire recto-verso.',
+    content: 'Vos aides au logement ont été recalculées à la hausse. Pour percevoir le rattrapage de 340?, fournissez une photo de votre carte bancaire recto-verso.',
     clues: ['Demande de carte bancaire recto-verso (permet de faire des achats)', 'Faux domaine CAF'],
     feedback: 'Ne jamais envoyer de photo de sa carte bancaire. La CAF possède déjà votre RIB.'
   },
@@ -1615,7 +1615,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Spotify - Changement de politique de prix',
     sender: 'update@spotify-billing-team.com',
-    content: 'Le prix de votre abonnement passe à 19.99€/mois. Pour conserver votre tarif actuel, revalidez vos conditions de paiement ici.',
+    content: 'Le prix de votre abonnement passe à 19.99?/mois. Pour conserver votre tarif actuel, revalidez vos conditions de paiement ici.',
     clues: ['Hausse de prix inventée pour forcer une action', 'Faux domaine de facturation'],
     feedback: 'Les hausses de prix sont généralement informatives. Devoir revalider une carte pour garder un ancien prix est une arnaque.'
   },
@@ -1651,7 +1651,7 @@ const scenarios = [
     type: 'phishing',
     title: 'PDG - Demande confidentielle (URGENT)',
     sender: 'jean.dupont.ceo@gmail.com',
-    content: 'Es-tu au bureau ? J\'ai besoin que tu m\'achètes 5 cartes cadeaux Transcash de 100€ pour fidéliser des clients importants. C\'est très urgent, je suis en réunion.',
+    content: 'Es-tu au bureau ? J\'ai besoin que tu m\'achètes 5 cartes cadeaux Transcash de 100? pour fidéliser des clients importants. C\'est très urgent, je suis en réunion.',
     clues: ['Demande de cartes prépayées', 'Adresse Gmail pour un PDG', 'Urgence et confidentialité'],
     feedback: 'Arnaque "aux cartes cadeaux" ciblant les employés (variante de la Fraude au Président).'
   },
@@ -1759,7 +1759,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Compte Ameli - Remboursement refusé',
     sender: 'contact@ameli-remboursement-mutuelle.fr',
-    content: 'Le remboursement de vos frais dentaires (140€) a été refusé car votre RIB est obsolète. Mettez-le à jour immédiatement.',
+    content: 'Le remboursement de vos frais dentaires (140?) a été refusé car votre RIB est obsolète. Mettez-le à jour immédiatement.',
     clues: ['Problème de remboursement inventé', 'Faux domaine Ameli'],
     feedback: 'L\'Assurance Maladie signale les rejets dans l\'espace personnel, elle ne demande pas un RIB par lien email.'
   },
@@ -1793,11 +1793,11 @@ const scenarios = [
   {
     id: 199,
     type: 'phishing',
-    title: 'EDF - Prime énergie de 200€',
+    title: 'EDF - Prime énergie de 200?',
     sender: 'aides@edf-prime-etat.fr',
-    content: 'Suite à l\'augmentation des prix, l\'État vous accorde une prime de 200€. Remplissez vos coordonnées bancaires pour que nous puissions créditer votre compte.',
+    content: 'Suite à l\'augmentation des prix, l\'?tat vous accorde une prime de 200?. Remplissez vos coordonnées bancaires pour que nous puissions créditer votre compte.',
     clues: ['Promesse de virement par EDF', 'Domaine non officiel'],
-    feedback: 'EDF ne distribue pas de primes d\'État par virement bancaire sur demande.'
+    feedback: 'EDF ne distribue pas de primes d\'?tat par virement bancaire sur demande.'
   },
   {
     id: 200,
@@ -1813,7 +1813,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Free Mobile - Gagnez le dernier iPhone',
     sender: 'concours@free-cadeaux-mobile.com',
-    content: 'En tant qu\'abonné fidèle, vous avez été tiré au sort pour recevoir l\'iPhone 15 Pro ! Payez simplement les 2,99€ de frais de douane.',
+    content: 'En tant qu\'abonné fidèle, vous avez été tiré au sort pour recevoir l\'iPhone 15 Pro ! Payez simplement les 2,99? de frais de douane.',
     clues: ['Cadeau de grande valeur', 'Frais cachés (douane)', 'Faux domaine Free'],
     feedback: 'L\'arnaque aux faux cadeaux opérateurs est un grand classique pour soutirer des données bancaires.'
   },
@@ -1822,7 +1822,7 @@ const scenarios = [
     type: 'legit',
     title: 'Sosh - Fin de votre période d\'engagement',
     sender: 'client@sosh.fr',
-    content: 'Votre période promotionnelle prend fin le mois prochain. Votre forfait passera à son tarif normal de 19,99€/mois.',
+    content: 'Votre période promotionnelle prend fin le mois prochain. Votre forfait passera à son tarif normal de 19,99?/mois.',
     clues: ['Rappel légal et commercial', 'Domaine officiel'],
     feedback: 'Notification de changement de tarif légitime.'
   },
@@ -1894,14 +1894,14 @@ const scenarios = [
     type: 'legit',
     title: 'Boursorama - Parrainez vos amis',
     sender: 'parrainage@boursorama.com',
-    content: 'Ce week-end seulement : gagnez 130€ pour chaque ami parrainé qui ouvre un compte chez Boursorama Banque (Pink Weekend).',
+    content: 'Ce week-end seulement : gagnez 130? pour chaque ami parrainé qui ouvre un compte chez Boursorama Banque (Pink Weekend).',
     clues: ['Offre commerciale classique (Pink Weekend)', 'Montants conformes aux habitudes de la banque'],
     feedback: 'Offre promotionnelle de parrainage légitime.'
   },
   {
     id: 211,
     type: 'phishing',
-    title: 'Uber - Facture de course (89,50€)',
+    title: 'Uber - Facture de course (89,50?)',
     sender: 'receipts@uber-rides-billing.com',
     content: 'Voici le reçu de votre course Premium du 12 juin. Si vous n\'avez pas effectué ce trajet, signalez la fraude en entrant vos coordonnées de carte.',
     clues: ['Montant de course très élevé', 'Demande de CB pour signaler une fraude', 'Faux domaine'],
@@ -1921,7 +1921,7 @@ const scenarios = [
     type: 'phishing',
     title: 'SNCF - Carte de réduction annulée',
     sender: 'service@sncf-cartes-avantages.fr',
-    content: 'Suite à une erreur de paiement, votre carte Avantage TGV a été annulée. Réglez 49€ via ce lien pour la réactiver avant votre prochain voyage.',
+    content: 'Suite à une erreur de paiement, votre carte Avantage TGV a été annulée. Réglez 49? via ce lien pour la réactiver avant votre prochain voyage.',
     clues: ['Menace sur un outil de voyage très utilisé', 'Paiement direct demandé', 'Faux domaine'],
     feedback: 'Les erreurs de paiement de cartes SNCF se règlent via l\'espace client SNCF Connect.'
   },
@@ -1957,7 +1957,7 @@ const scenarios = [
     type: 'phishing',
     title: 'RATP - Amende impayée Majorée',
     sender: 'recouvrement@ratp-amendes-infractions.fr',
-    content: 'Vous avez été verbalisé le 10 avril dans le métro (absence de titre de transport). L\'amende de 50€ passe à 180€ si non payée ce soir.',
+    content: 'Vous avez été verbalisé le 10 avril dans le métro (absence de titre de transport). L\'amende de 50? passe à 180? si non payée ce soir.',
     clues: ['Majoration soudaine', 'Menace temporelle forte (ce soir)'],
     feedback: 'La RATP n\'envoie pas de mise en demeure par email avec un préavis d\'une journée.'
   },
@@ -1975,7 +1975,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Vinted - Colis perdu, remboursement',
     sender: 'support@vinted-litiges.net',
-    content: 'L\'acheteur n\'a jamais reçu votre pull. Nous vous remboursons de 15€. Connectez votre compte bancaire pour recevoir les fonds.',
+    content: 'L\'acheteur n\'a jamais reçu votre pull. Nous vous remboursons de 15?. Connectez votre compte bancaire pour recevoir les fonds.',
     clues: ['Connecter son compte bancaire pour un litige', 'Faux domaine Vinted'],
     feedback: 'Les remboursements Vinted vont directement dans le porte-monnaie intégré à l\'application.'
   },
@@ -1993,7 +1993,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Amazon - Activité suspecte détectée',
     sender: 'security@amazon-alerts-account.com',
-    content: 'Nous avons détecté une tentative d\'achat de 899€ (MacBook) depuis la Russie. Cliquez ici pour bloquer la transaction et sécuriser votre compte.',
+    content: 'Nous avons détecté une tentative d\'achat de 899? (MacBook) depuis la Russie. Cliquez ici pour bloquer la transaction et sécuriser votre compte.',
     clues: ['Achat très cher pour paniquer', 'Localisation exotique (Russie)', 'Lien de sécurisation externe'],
     feedback: 'Phishing extrêmement classique pour voler les accès Amazon.'
   },
@@ -2009,9 +2009,9 @@ const scenarios = [
   {
     id: 223,
     type: 'phishing',
-    title: 'AliExpress - Taxe douanière de 1.20€',
+    title: 'AliExpress - Taxe douanière de 1.20?',
     sender: 'customs-service@aliexpress-eu-delivery.com',
-    content: 'Votre petit colis est bloqué en douane pour un reste à payer de 1,20€. Réglez cette somme pour débloquer la livraison.',
+    content: 'Votre petit colis est bloqué en douane pour un reste à payer de 1,20?. Réglez cette somme pour débloquer la livraison.',
     clues: ['Petit montant de douane', 'Demande de CB'],
     feedback: 'L\'arnaque aux frais de douane. AliExpress gère désormais la TVA à la source pour l\'Europe.'
   },
@@ -2020,7 +2020,7 @@ const scenarios = [
     type: 'legit',
     title: 'Fnac - Votre fidélité récompensée',
     sender: 'adherents@fnac.com',
-    content: 'Vous avez cumulé 30€ sur votre cagnotte fidélité Fnac+. Ils sont valables lors de votre prochain passage en caisse.',
+    content: 'Vous avez cumulé 30? sur votre cagnotte fidélité Fnac+. Ils sont valables lors de votre prochain passage en caisse.',
     clues: ['Information sur une cagnotte', 'Domaine officiel'],
     feedback: 'Email promotionnel pour les membres fidélité.'
   },
@@ -2029,7 +2029,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Chronopost - reprogrammer votre livraison',
     sender: 'livraison@chrono-suivi-france.net',
-    content: 'Vous étiez absent lors du passage de notre livreur. Cliquez ici pour choisir une nouvelle date de livraison (frais de traitement : 1,95€).',
+    content: 'Vous étiez absent lors du passage de notre livreur. Cliquez ici pour choisir une nouvelle date de livraison (frais de traitement : 1,95?).',
     clues: ['Demande de paiement pour reprogrammer une livraison', 'Faux domaine'],
     feedback: 'Une reprogrammation chez un transporteur officiel est toujours gratuite.'
   },
@@ -2038,7 +2038,7 @@ const scenarios = [
     type: 'legit',
     title: 'UPS - Mise à jour d\'expédition',
     sender: 'mcinfo@ups.com',
-    content: 'Votre colis 1Z00000000000 a quitté notre centre de tri de Chilly-Mazarin et est en transit.',
+    content: 'Votre colis 1Z0803004210 a quitté notre centre de tri de Chilly-Mazarin et est en transit.',
     clues: ['Tracking de colis', 'Domaine officiel UPS'],
     feedback: 'Information logistique légitime.'
   },
@@ -2047,7 +2047,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Instagram - Offre de certification payante',
     sender: 'meta-verified@ig-blue-badge.com',
-    content: 'Obtenez votre badge certifié bleu (Meta Verified) en accès anticipé pour 19,99€. Entrez vos coordonnées bancaires pour démarrer l\'abonnement.',
+    content: 'Obtenez votre badge certifié bleu (Meta Verified) en accès anticipé pour 19,99?. Entrez vos coordonnées bancaires pour démarrer l\'abonnement.',
     clues: ['Souscription à Meta Verified via un lien email non officiel', 'Faux domaine Meta/IG'],
     feedback: 'L\'abonnement Meta Verified se souscrit exclusivement dans les paramètres de l\'application Instagram ou Facebook.'
   },
@@ -2092,16 +2092,16 @@ const scenarios = [
     type: 'legit',
     title: 'Epic Games - Reçu de transaction',
     sender: 'help@epicgames.com',
-    content: 'Merci d\'avoir téléchargé le jeu gratuit de la semaine "GTA V". Total payé : 0,00€.',
-    clues: ['Facture à 0€ (jeu gratuit)', 'Domaine officiel'],
+    content: 'Merci d\'avoir téléchargé le jeu gratuit de la semaine "GTA V". Total payé : 0,00?.',
+    clues: ['Facture à 0? (jeu gratuit)', 'Domaine officiel'],
     feedback: 'Reçu automatique généré lors de la récupération d\'un jeu gratuit.'
   },
   {
     id: 233,
     type: 'phishing',
-    title: 'Impôts - Remboursement d\'un trop-perçu (210€)',
+    title: 'Impôts - Remboursement d\'un trop-perçu (210?)',
     sender: 'remboursement@dgfip-impots-france.org',
-    content: 'Suite à un recalcul de votre taxe foncière, nous vous devons 210€. Veuillez confirmer votre carte bancaire pour le crédit.',
+    content: 'Suite à un recalcul de votre taxe foncière, nous vous devons 210?. Veuillez confirmer votre carte bancaire pour le crédit.',
     clues: ['Demande de carte bancaire par le fisc', 'Extension .org'],
     feedback: 'La Direction Générale des Finances Publiques connaît votre RIB et procède par virement direct, jamais sur carte bancaire.'
   },
@@ -2119,7 +2119,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Ministère de l\'Intérieur - Vignette Crit\'Air obligatoire',
     sender: 'commande@certificat-air-vehicule.fr',
-    content: 'La vignette Crit\'Air de classe supérieure est obligatoire dès lundi. Commandez-la en urgence pour 2,99€ pour éviter une amende de 135€.',
+    content: 'La vignette Crit\'Air de classe supérieure est obligatoire dès lundi. Commandez-la en urgence pour 2,99? pour éviter une amende de 135?.',
     clues: ['Urgence et menace d\'amende', 'Faux domaine de commande'],
     feedback: 'Le seul site officiel est certificat-air.gouv.fr. Les autres sont des arnaques.'
   },
@@ -2128,7 +2128,7 @@ const scenarios = [
     type: 'legit',
     title: 'Mon Compte Formation - Confirmation d\'inscription',
     sender: 'noreply@moncompteformation.gouv.fr',
-    content: 'Votre inscription à la formation "Anglais Professionnel" a été validée par l\'organisme. Vos droits CPF ont été débités de 450€.',
+    content: 'Votre inscription à la formation "Anglais Professionnel" a été validée par l\'organisme. Vos droits CPF ont été débités de 450?.',
     clues: ['Confirmation d\'une démarche initiée par l\'utilisateur', 'Domaine officiel'],
     feedback: 'Notification administrative après une inscription volontaire.'
   },
@@ -2146,7 +2146,7 @@ const scenarios = [
     type: 'legit',
     title: 'URSSAF - Accusé de réception de votre déclaration',
     sender: 'noreply@urssaf.fr',
-    content: 'Nous vous confirmons la bonne réception de votre déclaration de chiffre d\'affaires pour le 1er trimestre. Montant des cotisations à payer : 340€.',
+    content: 'Nous vous confirmons la bonne réception de votre déclaration de chiffre d\'affaires pour le 1er trimestre. Montant des cotisations à payer : 340?.',
     clues: ['Accusé de réception formel', 'Domaine officiel'],
     feedback: 'Accusé de réception automatique après une démarche sur le site.'
   },
@@ -2165,7 +2165,7 @@ const scenarios = [
     title: 'Spotify - Votre Wrapped de l\'année est là !',
     sender: 'no-reply@spotify.com',
     content: 'Découvrez vos artistes, chansons et genres les plus écoutés de l\'année avec votre Spotify Wrapped. Partagez-le avec vos amis.',
-    clues: ['Événement marketing annuel attendu', 'Domaine officiel'],
+    clues: ['?vénement marketing annuel attendu', 'Domaine officiel'],
     feedback: 'Campagne de rétention et d\'engagement très connue.'
   },
   {
@@ -2173,7 +2173,7 @@ const scenarios = [
     type: 'phishing',
     title: 'Canal+ - Renouvellement de votre décodeur',
     sender: 'equipement@canalplus-echanges.fr',
-    content: 'Votre décodeur actuel va devenir obsolète. Commandez le nouveau modèle 4K gratuitement. Réglez uniquement les frais d\'envoi (4,99€).',
+    content: 'Votre décodeur actuel va devenir obsolète. Commandez le nouveau modèle 4K gratuitement. Réglez uniquement les frais d\'envoi (4,99?).',
     clues: ['Frais d\'envoi pour un équipement gratuit', 'Faux prétexte d\'obsolescence'],
     feedback: 'Arnaque courante ciblant les abonnés TV pour leur soutirer de petites sommes, puis prélever des abonnements cachés.'
   },
@@ -2207,7 +2207,7 @@ const scenarios = [
   {
     id: 245,
     type: 'phishing',
-    title: 'YouTube - Collaboration commerciale (1500€/vidéo)',
+    title: 'YouTube - Collaboration commerciale (1500?/vidéo)',
     sender: 'marketing@nordvpn-sponsorships.net',
     content: 'Bonjour, nous adorons votre chaîne ! Nous vous proposons un partenariat sponsorisé. Téléchargez notre brief de campagne (Brief_Campagne.zip) avec notre logiciel à tester.',
     clues: ['Offre d\'argent facile pour un créateur', 'Fichier .zip contenant un malware déguisé en logiciel/brief'],
@@ -2218,7 +2218,7 @@ const scenarios = [
     type: 'legit',
     title: 'Pinterest - Nouvelles idées pour "Déco Salon"',
     sender: 'pinbot@pinterest.com',
-    content: 'Nous avons trouvé de nouvelles épingles qui pourraient vous plaire pour votre tableau "Déco Salon". Jetez-y un œil !',
+    content: 'Nous avons trouvé de nouvelles épingles qui pourraient vous plaire pour votre tableau "Déco Salon". Jetez-y un ?il !',
     clues: ['Contenu basé sur l\'activité de l\'utilisateur', 'Domaine officiel'],
     feedback: 'Recommandation de contenu.'
   },
@@ -2252,7 +2252,7 @@ const scenarios = [
   {
     id: 250,
     type: 'legit',
-    title: 'Google Agenda - Événement à venir : Réunion Client',
+    title: 'Google Agenda - ?vénement à venir : Réunion Client',
     sender: 'calendar-notification@google.com',
     content: 'Rappel de l\'événement : Réunion Client Alpha prévu de 14:00 à 15:00. Lien de visioconférence Google Meet inclus.',
     clues: ['Rappel d\'agenda standard', 'Lien Meet officiel', 'Domaine Google'],
@@ -2277,9 +2277,9 @@ const quiz = [
   { q: "Qu'est-ce qu'un 'Ransomware' (Rançongiciel) ?", options: ["Un logiciel qui bloque vos fichiers en exigeant un paiement", "Un faux antivirus", "Un email qui vous fait du chantage"], correct: 0 },
   { q: "Quelle est la meilleure protection contre un Ransomware ?", options: ["Payer la rançon", "Avoir des sauvegardes régulières et déconnectées", "Changer de mot de passe"], correct: 1 },
   { q: "Qu'est-ce que l'ingénierie sociale (Social Engineering) ?", options: ["Le codage de réseaux sociaux", "La manipulation psychologique pour obtenir des infos", "Un diplôme en informatique"], correct: 1 },
-  { q: "Qu'est-ce que la 'Fraude au Président' (FOVI) ?", options: ["Se faire passer pour un dirigeant pour ordonner un virement", "Pirater le site de l'Élysée", "Falsifier des billets de banque"], correct: 0 },
+  { q: "Qu'est-ce que la 'Fraude au Président' (FOVI) ?", options: ["Se faire passer pour un dirigeant pour ordonner un virement", "Pirater le site de l'?lysée", "Falsifier des billets de banque"], correct: 0 },
   { q: "Quelle est la caractéristique principale d'un email de phishing ?", options: ["Il est toujours plein de fautes", "Il crée un sentiment d'urgence ou de peur", "Il est envoyé la nuit"], correct: 1 },
-  { q: "À quoi sert l'A2F (Authentification à double facteur) ?", options: ["À doubler la vitesse de connexion", "À ajouter une couche de sécurité (mot de passe + code)", "À avoir deux comptes utilisateurs"], correct: 1 },
+  { q: "ì quoi sert l'A2F (Authentification à double facteur) ?", options: ["ì doubler la vitesse de connexion", "ì ajouter une couche de sécurité (mot de passe + code)", "ì avoir deux comptes utilisateurs"], correct: 1 },
   { q: "Lequel de ces mots de passe est le plus sécurisé ?", options: ["P@ssw0rd123", "SoleilBleuMaisonVoiture!", "123456789"], correct: 1 },
   { q: "Pourquoi une phrase de passe (passphrase) est-elle recommandée ?", options: ["Elle est plus facile à retenir et plus longue à pirater", "Elle est imposée par la loi", "Les hackers ne savent pas lire les phrases"], correct: 0 },
   { q: "Qu'est-ce qu'une attaque par 'Force Brute' ?", options: ["Voler un ordinateur physiquement", "Tester toutes les combinaisons possibles d'un mot de passe", "Casser un pare-feu avec un malware"], correct: 1 },
@@ -2305,7 +2305,7 @@ const quiz = [
   { q: "Qu'est-ce que le 'Spear Phishing' (Harponnage) ?", options: ["Un phishing envoyé au hasard à des millions de personnes", "Un phishing ultra-ciblé et personnalisé sur une victime", "Le vol de données bancaires en magasin"], correct: 1 },
   { q: "Qu'est-ce qu'un 'Malware' ?", options: ["Le terme générique pour tout logiciel malveillant", "Un dysfonctionnement matériel", "Un logiciel de nettoyage de PC"], correct: 0 },
   { q: "Un 'Cheval de Troie' (Trojan) c'est :", options: ["Un logiciel légitime en apparence mais qui cache un code malveillant", "Un virus qui détruit votre carte mère", "Un email écrit en grec"], correct: 0 },
-  { q: "À quoi sert un Pare-feu (Firewall) ?", options: ["À refroidir le processeur", "À filtrer le trafic entrant et sortant du réseau", "À supprimer les spams"], correct: 1 },
+  { q: "ì quoi sert un Pare-feu (Firewall) ?", options: ["ì refroidir le processeur", "ì filtrer le trafic entrant et sortant du réseau", "ì supprimer les spams"], correct: 1 },
   { q: "Qu'est-ce que la 'Seed Phrase' (Phrase de récupération) en cryptomonnaie ?", options: ["Le mot de passe pour se connecter au site", "La clé maîtresse qui permet de récupérer tous ses fonds", "L'adresse publique de son portefeuille"], correct: 1 },
   { q: "Un support technique Microsoft vous appelle pour vous dire que votre PC est infecté :", options: ["Je suis leurs instructions pour le nettoyer", "C'est une arnaque, Microsoft n'appelle jamais pour ça", "Je leur donne l'accès à distance"], correct: 1 },
   { q: "Quel risque représente une clé USB offerte lors d'un salon professionnel (Goodie) ?", options: ["Elle peut contenir un malware préinstallé", "Elle risque de griller le port USB", "Aucun risque si elle est neuve"], correct: 0 },
@@ -2313,7 +2313,7 @@ const quiz = [
   { q: "Pourquoi les QR codes imprimés sur des parcmètres peuvent être dangereux ?", options: ["Ils consomment trop de batterie", "Un escroc a pu coller un faux QR code par-dessus (Quishing)", "Ils transmettent des virus par onde"], correct: 1 },
   { q: "Un ami Facebook vous demande soudainement de l'argent par message car il est coincé à l'étranger :", options: ["Je lui fais un virement immédiatement", "Son compte a probablement été piraté, je l'appelle sur son téléphone", "Je lui demande sa carte d'identité par message"], correct: 1 },
   { q: "Sur un site de e-commerce inconnu, quel est un signal d'alarme ?", options: ["Les prix sont 80% moins chers que partout ailleurs", "Le site propose la livraison à domicile", "Le site utilise HTTPS"], correct: 0 },
-  { q: "À quoi sert le 'Mode navigation privée' du navigateur ?", options: ["À devenir totalement anonyme et invisible sur internet", "À ne pas enregistrer l'historique et les cookies sur l'ordinateur local", "À se protéger des virus"], correct: 1 },
+  { q: "ì quoi sert le 'Mode navigation privée' du navigateur ?", options: ["ì devenir totalement anonyme et invisible sur internet", "ì ne pas enregistrer l'historique et les cookies sur l'ordinateur local", "ì se protéger des virus"], correct: 1 },
   { q: "Qu'est-ce que le RGPD ?", options: ["Un réseau de protection des données", "Le Règlement Général sur la Protection des Données européen", "Un type de pare-feu"], correct: 1 },
   { q: "Si vous recevez un email contenant un mot de passe que vous utilisiez il y a 5 ans :", options: ["C'est la preuve que le hacker contrôle mon PC actuel", "C'est une arnaque utilisant d'anciennes fuites de données (Sextorsion)", "Je dois payer la rançon demandée"], correct: 1 },
   { q: "Comment sécuriser au mieux son réseau Wi-Fi personnel ?", options: ["Ne pas mettre de mot de passe", "Utiliser le chiffrement WPA2 ou WPA3 avec un mot de passe fort", "Cacher le routeur dans un placard"], correct: 1 },
@@ -2329,7 +2329,7 @@ const quiz = [
   { q: "Un site web affiche un pop-up : 'Votre abonnement antivirus a expiré ! Cliquez ici'.", options: ["C'est vrai, je dois cliquer", "C'est un 'Scareware' (logiciel faisant peur) pour vous faire installer un faux logiciel", "C'est un message de Windows"], correct: 1 },
   { q: "Pourquoi ne faut-il pas envoyer sa pièce d'identité par email à un inconnu ?", options: ["Parce que le fichier est trop lourd", "Pour éviter l'usurpation d'identité et l'ouverture de faux crédits", "Parce que c'est illégal"], correct: 1 },
   { q: "Que faire pour envoyer un document d'identité de manière plus sécurisée ?", options: ["L'envoyer en noir et blanc", "Ajouter un filigrane (watermark) précisant le destinataire et la date", "Le flouter entièrement"], correct: 1 },
-  { q: "Le Bluetooth de votre téléphone doit-il rester activé en permanence ?", options: ["Oui, pour le réseau", "Non, il vaut mieux le désactiver s'il n'est pas utilisé pour limiter les risques", "Ça n'a aucune importance"], correct: 1 },
+  { q: "Le Bluetooth de votre téléphone doit-il rester activé en permanence ?", options: ["Oui, pour le réseau", "Non, il vaut mieux le désactiver s'il n'est pas utilisé pour limiter les risques", "?a n'a aucune importance"], correct: 1 },
   { q: "Quel est le risque de charger son téléphone sur une borne USB publique dans un aéroport ?", options: ["Le 'Juice Jacking' : le vol de données ou l'infection via le port USB", "Le téléphone va charger trop vite", "La batterie va exploser"], correct: 0 },
   { q: "Qu'est-ce qu'une attaque DDoS (Déni de Service Distribué) ?", options: ["Rendre un site web indisponible en le saturant de requêtes", "Voler les mots de passe d'une base de données", "Détruire les serveurs physiquement"], correct: 0 },
   { q: "Qu'est-ce qu'un 'Botnet' ?", options: ["Un réseau de robots informatiques (ordinateurs infectés) contrôlés à distance", "Une intelligence artificielle qui joue aux échecs", "Un logiciel de discussion"], correct: 0 },
@@ -2338,8 +2338,8 @@ const quiz = [
   { q: "Qu'est-ce que le 'Cryptojacking' ?", options: ["Voler le code de la carte bleue", "L'utilisation à votre insu de votre ordinateur pour miner de la cryptomonnaie", "Un nouveau type de ransomware"], correct: 1 },
   { q: "Vous recevez un email de Netflix disant 'Paiement refusé', mais l'adresse est 'support@netfiix.com' (avec un i au lieu d'un L).", options: ["C'est du Typosquatting (Phishing)", "C'est normal", "C'est une erreur de frappe de Netflix"], correct: 0 },
   { q: "Laquelle de ces données est considérée comme une Donnée à Caractère Personnel (DCP) ?", options: ["L'adresse IP", "Le nom de votre entreprise", "La météo de votre ville"], correct: 0 },
-  { q: "À quoi sert un 'Hameçon' (Hook) dans une attaque d'ingénierie sociale ?", options: ["À pêcher", "À capter l'attention et susciter une émotion (peur, curiosité, cupidité)", "À effacer les disques durs"], correct: 1 },
-  { q: "Vous gagnez le dernier iPhone sur un site, on vous demande juste 2€ pour les frais de port :", options: ["C'est une aubaine !", "C'est une arnaque classique pour voler les numéros de votre carte bancaire", "Je préfère payer en liquide"], correct: 1 },
+  { q: "ì quoi sert un 'Hameçon' (Hook) dans une attaque d'ingénierie sociale ?", options: ["ì pêcher", "ì capter l'attention et susciter une émotion (peur, curiosité, cupidité)", "ì effacer les disques durs"], correct: 1 },
+  { q: "Vous gagnez le dernier iPhone sur un site, on vous demande juste 2? pour les frais de port :", options: ["C'est une aubaine !", "C'est une arnaque classique pour voler les numéros de votre carte bancaire", "Je préfère payer en liquide"], correct: 1 },
   { q: "Qu'est-ce qu'une faille 'Zero-Day' ?", options: ["Une faille de sécurité inédite, que le créateur du logiciel ne connaît pas encore", "Un virus qui agit à minuit", "Un logiciel qui efface tout en zéro jour"], correct: 0 },
   { q: "Quelle est la règle de la sauvegarde 3-2-1 ?", options: ["3 copies, 2 supports différents, 1 copie hors site", "3 disques durs, 2 PC, 1 cloud", "3 fois par jour, 2 fois par semaine, 1 fois par mois"], correct: 0 },
   { q: "Comment vérifier qu'un profil sur un réseau social est authentique (ex: marque ou célébrité) ?", options: ["S'il a beaucoup d'abonnés", "La présence du badge de vérification (bien qu'il faille rester vigilant)", "S'il vous demande de l'argent en privé"], correct: 1 },
@@ -2348,7 +2348,7 @@ const quiz = [
   { q: "La sécurité informatique est la responsabilité de :", options: ["Seulement le service informatique", "Tout le monde, y compris les utilisateurs", "Le directeur uniquement"], correct: 1 },
   { q: "Un 'Cookie' informatique sert principalement à :", options: ["Infecter l'ordinateur", "Mémoriser des informations sur l'utilisateur (connexion, préférences)", "Nettoyer l'historique"], correct: 1 },
   { q: "Que signifie le sigle 'RGPD' ?", options: ["Règlement Général sur la Protection des Données", "Réseau Global de Partage de Données", "Registre Général des Personnes Déclarées"], correct: 0 },
-  { q: "Quel comportement est suspect pour une application mobile (lampe torche par ex.) ?", options: ["Demander l'accès au flash", "Demander l'accès à vos contacts et vos SMS", "Être gratuite"], correct: 1 },
+  { q: "Quel comportement est suspect pour une application mobile (lampe torche par ex.) ?", options: ["Demander l'accès au flash", "Demander l'accès à vos contacts et vos SMS", "?tre gratuite"], correct: 1 },
   { q: "Un attaquant récupère des documents jetés à la poubelle devant votre entreprise. C'est du :", options: ["Dumpster Diving (Fouille de poubelles)", "Clean Desk", "Phishing"], correct: 0 },
   { q: "Qu'est-ce que la règle du 'Clean Desk' (Bureau Propre) en entreprise ?", options: ["Ne laisser aucun document confidentiel visible sur son bureau en partant", "Passer l'aspirateur tous les soirs", "Avoir un fond d'écran uni"], correct: 0 },
   { q: "Un email de votre banque vous vouvoie mais n'utilise pas votre nom (ex: 'Cher client'). Est-ce normal ?", options: ["Oui, c'est pour être poli", "Non, les vrais emails bancaires vous appellent généralement par votre nom", "Seulement pour les nouveaux clients"], correct: 1 },
@@ -2373,7 +2373,7 @@ const quiz = [
   { q: "Le service 'Have I Been Pwned' est-il sûr à utiliser ?", options: ["Oui, il est reconnu par les experts en sécurité", "Non, c'est un site de hackers", "Seulement sur mobile"], correct: 0 },
   { q: "Un fichier joint nommé 'Facture_2025.pdf.exe' est :", options: ["Un PDF sécurisé", "Un exécutable déguisé en PDF, très dangereux", "Un fichier endommagé"], correct: 1 },
   { q: "Si vous recevez une notification d'approbation (MFA) sur votre téléphone alors que vous ne vous connectez pas :", options: ["Vous l'approuvez par réflexe", "Vous refusez, quelqu'un essaie d'utiliser votre mot de passe", "Vous éteignez le téléphone"], correct: 1 },
-  { q: "Le 'SIM Swapping' (Échange de carte SIM) permet au pirate de :", options: ["Récupérer votre numéro de téléphone pour intercepter vos SMS (dont les codes 2FA)", "Avoir internet gratuitement", "Appeler l'étranger"], correct: 0 },
+  { q: "Le 'SIM Swapping' (?change de carte SIM) permet au pirate de :", options: ["Récupérer votre numéro de téléphone pour intercepter vos SMS (dont les codes 2FA)", "Avoir internet gratuitement", "Appeler l'étranger"], correct: 0 },
   { q: "Comment les pirates cachent-ils souvent de faux liens dans les emails ?", options: ["En utilisant du texte transparent", "En modifiant l'hyperlien derrière le texte du bouton", "En écrivant à l'envers"], correct: 1 },
   { q: "Le 'Pharming' consiste à :", options: ["Cultiver des virus", "Rediriger secrètement le trafic d'un site légitime vers un faux site", "Voler des tracteurs"], correct: 1 },
   { q: "Qu'est-ce qu'une attaque 'Zero-Click' ?", options: ["Un virus qui infecte l'appareil sans aucune interaction de l'utilisateur", "Une souris sans bouton", "Un spam inoffensif"], correct: 0 },
@@ -2384,7 +2384,7 @@ const quiz = [
   { q: "Qu'est-ce qu'un 'Hacker éthique' (White Hat) ?", options: ["Un pirate qui vole pour les pauvres", "Un expert qui aide les entreprises à trouver et corriger leurs failles", "Un vendeur d'antivirus"], correct: 1 },
   { q: "Le principe de 'Moindre Privilège' en entreprise signifie :", options: ["Payer les employés le moins possible", "Donner à un utilisateur uniquement les accès strictement nécessaires à son travail", "Retirer internet aux employés"], correct: 1 },
   { q: "Les données biométriques (empreinte digitale, Face ID) sont utilisées pour :", options: ["Remplacer le mot de passe réseau", "Renforcer l'authentification (Ce que je suis)", "Améliorer les photos"], correct: 1 },
-  { q: "Pourquoi est-il risqué de rooter (Android) ou jailbreaker (iOS) son téléphone ?", options: ["Ça fait sauter la garantie uniquement", "Ça désactive les mécanismes de sécurité du système d'exploitation", "Ça efface les photos"], correct: 1 },
+  { q: "Pourquoi est-il risqué de rooter (Android) ou jailbreaker (iOS) son téléphone ?", options: ["?a fait sauter la garantie uniquement", "?a désactive les mécanismes de sécurité du système d'exploitation", "?a efface les photos"], correct: 1 },
   { q: "Une 'Attaque par rebond' c'est :", options: ["Jeter un PC par la fenêtre", "Infecter un sous-traitant vulnérable pour atteindre l'entreprise cible finale", "Un virus qui saute de fichier en fichier"], correct: 1 },
   { q: "L'usurpation d'URL par des caractères d'alphabets étrangers (ex: un 'a' cyrillique) s'appelle :", options: ["Le Phishing linguistique", "Une attaque Homographique", "Un bug d'affichage"], correct: 1 },
   { q: "Si on a un doute sur l'expéditeur d'un email (ex: Impôts), que faut-il vérifier en premier ?", options: ["L'adresse email complète et réelle de l'expéditeur, pas juste le nom affiché", "La couleur du logo", "La date de l'email"], correct: 0 },
@@ -2412,20 +2412,165 @@ const quiz = [
   { q: "Un 'Test d'intrusion' (Pentest) sert à :", options: ["Cambrioler un bâtiment", "Simuler une attaque informatique pour évaluer la sécurité d'un système", "Tester la résistance des disques durs"], correct: 1 },
   { q: "Les données stockées dans le 'Cloud' :", options: ["Ne peuvent jamais être piratées", "Sont hébergées sur les serveurs d'un prestataire (Google, Microsoft) et nécessitent des mots de passe forts", "Sont stockées dans la stratosphère"], correct: 1 },
   { q: "La fraude au 'Faux RIB' consiste à :", options: ["Imprimer de faux billets", "Pirater la boîte mail d'un fournisseur pour envoyer ses factures avec le RIB de l'escroc", "Utiliser la carte bleue d'un proche"], correct: 1 },
-  { q: "Si votre navigateur vous propose de sauvegarder votre mot de passe bancaire :", options: ["C'est conseillé", "Il vaut mieux refuser et utiliser un gestionnaire externe ou l'apprendre par cœur", "C'est obligatoire"], correct: 1 },
+  { q: "Si votre navigateur vous propose de sauvegarder votre mot de passe bancaire :", options: ["C'est conseillé", "Il vaut mieux refuser et utiliser un gestionnaire externe ou l'apprendre par c?ur", "C'est obligatoire"], correct: 1 },
   { q: "Qu'est-ce qu'un 'Spyware' ?", options: ["Un logiciel espion qui collecte vos informations à votre insu", "Un appareil photo discret", "Un logiciel antivirus"], correct: 0 }
 ];
 
-// Route racine (évite "Cannot GET /")
+const links = (() => {
+  const safeUrls = [
+    'https://www.microsoft.com/security',
+    'https://account.microsoft.com',
+    'https://www.paypal.com/fr/home',
+    'https://www.amazon.fr',
+    'https://accounts.google.com',
+    'https://support.apple.com',
+    'https://www.netflix.com',
+    'https://www.laposte.fr',
+    'https://www.ameli.fr',
+    'https://www.impots.gouv.fr',
+    'https://www.docusign.com',
+    'https://github.com/login',
+    'https://www.facebook.com',
+    'https://www.instagram.com',
+    'https://www.linkedin.com',
+    'https://www.edf.fr',
+    'https://www.orange.fr',
+    'https://www.sfr.fr',
+    'https://mobile.free.fr',
+    'https://www.ups.com',
+    'https://www.dhl.com/fr-fr/home.html',
+    'https://www.chronopost.fr',
+    'https://www.doctolib.fr',
+    'https://www.airbnb.fr',
+    'https://www.booking.com',
+    'https://www.sncf-connect.com',
+    'https://mabanque.bnpparibas',
+    'https://particuliers.sg.fr',
+    'https://www.credit-agricole.fr',
+    'https://www.vinted.fr',
+    'https://www.leboncoin.fr',
+    'https://accounts.spotify.com',
+    'https://www.service-public.fr',
+    'https://amendes.gouv.fr',
+    'https://www.caf.fr',
+    'https://www.urssaf.fr',
+    'https://www.cnil.fr',
+    'https://www.francetravail.fr',
+    'https://www.blablacar.fr',
+    'https://support.google.com'
+  ];
+
+  const brands = [
+    'microsoft', 'paypal', 'amazon', 'google', 'apple', 'netflix', 'laposte', 'ameli',
+    'impots', 'docusign', 'github', 'facebook', 'instagram', 'linkedin', 'edf', 'orange',
+    'sfr', 'free', 'ups', 'dhl', 'chronopost', 'doctolib', 'airbnb', 'booking', 'sncf',
+    'bnpparibas', 'societegenerale', 'creditagricole', 'vinted', 'leboncoin'
+  ];
+
+  const suspiciousTemplates = [
+    (brand) => `https://${brand}-support-verification.com/login`,
+    (brand) => `https://secure.${brand}.com.account-check.security-update.net`,
+    (brand) => `http://${brand}-alert-center.net/confirm`,
+    (brand) => `https://${brand}-login-verif.com/session`,
+    (brand) => `https://${brand}.com.mise-a-jour-obligatoire.org`,
+    (brand) => `https://xn--${brand}-9xa.com/recovery`,
+    (brand) => `https://${brand}-billing-refund.com/payment`,
+    (brand) => `https://auth-${brand}-reset-password.info`,
+    (brand) => `https://${brand}.secure-user-check.co`,
+    (brand) => `https://${brand}-verification-2fa.com/validate`,
+    (brand) => `https://${brand}-helpdesk-mail.com/login`,
+    (brand) => `http://${brand}-service-client.net/urgent`
+  ];
+
+  const homographLikeUrls = [
+    'https://rnicrosoft-account-security.com/login',
+    'https://paypaI-account-review.com/secure',
+    'https://arnazon-fr.support-verification.com/login',
+    'https://g00gle-security-alert.com/recovery',
+    'https://micr0soft-identity-check.com/session',
+    'https://faceb00k-policy-center.com/confirm',
+    'https://lnstagram-business-support.com/verify',
+    'https://netfIix-billing-fix.com/update',
+    'https://1inkedin-notification-center.com/login',
+    'https://appIe-id-protection.com/secure'
+  ];
+
+  return Array.from({ length: 150 }, (_unused, index) => {
+    const id = index + 1;
+    const isSafe = id % 5 === 0 || id % 11 === 0;
+
+    if (isSafe) {
+      return {
+        id,
+        url: safeUrls[(id - 1) % safeUrls.length],
+        verdict: 'safe',
+        clues: [
+          'Domaine principal attendu',
+          'Structure d URL coherente',
+          'Aucun indice de typosquatting'
+        ]
+      };
+    }
+
+    const brand = brands[(id - 1) % brands.length];
+    let url = suspiciousTemplates[(id - 1) % suspiciousTemplates.length](brand);
+    let clue = 'Domaine non officiel pour la marque';
+
+    if (id % 19 === 1) {
+      url = homographLikeUrls[0];
+      clue = 'Substitution visuelle rn au lieu de m';
+    } else if (id % 23 === 4) {
+      url = homographLikeUrls[1];
+      clue = 'Substitution visuelle I majuscule au lieu de l';
+    } else if (id % 29 === 7) {
+      url = homographLikeUrls[2];
+      clue = 'Substitution visuelle rn au lieu de m dans la marque';
+    } else if (id % 31 === 9) {
+      url = homographLikeUrls[3];
+      clue = 'Utilisation de chiffres pour imiter des lettres';
+    } else if (id % 37 === 12) {
+      url = homographLikeUrls[4];
+      clue = 'Zero a la place de la lettre o';
+    } else if (id % 41 === 14) {
+      url = homographLikeUrls[5];
+      clue = 'Zero dans le nom de marque';
+    } else if (id % 43 === 16) {
+      url = homographLikeUrls[6];
+      clue = 'l minuscule a la place de i majuscule';
+    } else if (id % 47 === 18) {
+      url = homographLikeUrls[7];
+      clue = 'I majuscule a la place de l minuscule';
+    } else if (id % 53 === 22) {
+      url = homographLikeUrls[8];
+      clue = 'Chiffre 1 pour simuler une lettre';
+    } else if (id % 59 === 26) {
+      url = homographLikeUrls[9];
+      clue = 'I majuscule pour simuler un l minuscule';
+    }
+
+    return {
+      id,
+      url,
+      verdict: 'suspicious',
+      clues: [
+        clue,
+        'Sous-domaine ou formulation trompeuse',
+        'Contexte de verification ou urgence'
+      ]
+    };
+  });
+})();
+
+// Route racine (?vite "Cannot GET /")
 app.get("/", (_req, res) => {
   res
     .status(200)
     .type("text")
-    .send("✅ AntiPhish API OK — endpoints: /api/health /api/scenarios /api/quiz");
+    .send("OK AntiPhish API OK ? endpoints: /api/health /api/scenarios /api/quiz /api/links");
 });
 
 /* ======================================================
-   🔀 Fisher-Yates Shuffle (randomisation propre)
+   Fisher-Yates Shuffle (randomisation propre)
 ====================================================== */
 function shuffle(array) {
   const arr = [...array];
@@ -2437,17 +2582,17 @@ function shuffle(array) {
 }
 
 /* ======================================================
-   🩺 HEALTH CHECK
+   HEALTH CHECK
 ====================================================== */
 app.get('/api/health', (req, res) => {
   res.json({ ok: true, service: "antiphish-api" });
 });
 
 /* ======================================================
-   📚 SCENARIOS
+   SCENARIOS
 ====================================================== */
 
-/* ➜ Tous les scénarios mélangés */
+/* Tous les scénarios mélangés */
 app.get('/api/scenarios', (req, res) => {
   if (scenarios.length === 0) {
     return res.json([]);
@@ -2464,7 +2609,7 @@ app.get('/api/scenarios', (req, res) => {
   return res.json(shuffled.slice(0, n));
 });
 
-/* ➜ Un seul scénario aléatoire */
+/* Un seul scénario aléatoire */
 app.get('/api/scenarios/random', (req, res) => {
   if (scenarios.length === 0) {
     return res.status(404).json({ error: "No scenarios available" });
@@ -2475,10 +2620,10 @@ app.get('/api/scenarios/random', (req, res) => {
 });
 
 /* ======================================================
-   🧠 QUIZ
+   QUIZ
 ====================================================== */
 
-/* ➜ Toutes les questions mélangées */
+/* Toutes les questions mélangées */
 app.get('/api/quiz', (req, res) => {
   if (quiz.length === 0) {
     return res.json([]);
@@ -2495,7 +2640,7 @@ app.get('/api/quiz', (req, res) => {
   return res.json(shuffled.slice(0, n));
 });
 
-/* ➜ Une question aléatoire */
+/* Une question aléatoire */
 app.get('/api/quiz/random', (req, res) => {
   if (quiz.length === 0) {
     return res.status(404).json({ error: "No quiz questions available" });
@@ -2506,18 +2651,50 @@ app.get('/api/quiz/random', (req, res) => {
 });
 
 /* ======================================================
-   🎯 SCORE
+   LINK INSPECTION
+====================================================== */
+
+/* Toutes les URLs mélangées */
+app.get('/api/links', (req, res) => {
+  if (links.length === 0) {
+    return res.json([]);
+  }
+
+  const n = parseInt(req.query.n);
+
+  const shuffled = shuffle(links);
+
+  if (!n || n > links.length) {
+    return res.json(shuffled);
+  }
+
+  return res.json(shuffled.slice(0, n));
+});
+
+/* Une URL aléatoire */
+app.get('/api/links/random', (req, res) => {
+  if (links.length === 0) {
+    return res.status(404).json({ error: "No links available" });
+  }
+
+  const randomIndex = Math.floor(Math.random() * links.length);
+  res.json(links[randomIndex]);
+});
+
+/* ======================================================
+   SCORE
 ====================================================== */
 app.post('/api/score', (req, res) => {
   const { score } = req.body;
-  console.log(`Score reçu: ${score}`);
+  console.log(`?tat d'avancement : ${score}`);
   res.json({ received: score, stored: false });
 });
 
 
 /* ======================================================
-   🚀 START SERVER
+   START SERVER
 ====================================================== */
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`API running on http://0.0.0.0:${PORT}`);
 });
+

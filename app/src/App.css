@@ -384,7 +384,7 @@ body {
 }
 
 /* --- CARTES INTERNES --- */
-.email-card, .quiz-card, .info-card {
+.email-card, .quiz-card, .info-card, .link-card {
   background: var(--card-bg);
   border-radius: 23px;
   padding: 3.5rem;
@@ -414,6 +414,38 @@ body {
 .btn-primary.glow-hover:hover { box-shadow: 0 10px 25px rgba(37,99,235,0.4); }
 .btn-safe.glow-hover:hover { box-shadow: 0 10px 25px rgba(16,185,129,0.4); }
 .btn-danger.glow-hover:hover { box-shadow: 0 10px 25px rgba(239,68,68,0.4); }
+
+/* --- LINK INSPECTION --- */
+.link-card {
+  text-align: left;
+}
+
+.link-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 1.8rem;
+  line-height: 1.6;
+}
+
+.link-url-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.1rem 1rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+}
+
+.link-url-box code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color: #1e293b;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.link-disabled {
+  opacity: 0.8;
+}
 
 /* --- QUIZ --- */
 .quiz-question { font-size: 1.6rem; line-height: 1.5; margin-bottom: 3rem; text-align: center; font-weight: 800; color: #1e293b;}
@@ -490,7 +522,7 @@ body {
   .header { padding: 1rem; flex-direction: column; gap: 1rem; }
   .content { padding: 2rem 1rem; }
   .email-actions { flex-direction: column; }
-  .email-card, .quiz-card { padding: 2rem 1.5rem; }
+  .email-card, .quiz-card, .link-card { padding: 2rem 1.5rem; }
   .score-circle { width: 160px; height: 160px; font-size: 3.5rem; }
   .toast { top: 20px; right: 50%; transform: translateX(50%); width: 90%; animation: slideDown 0.4s ease; }
 }

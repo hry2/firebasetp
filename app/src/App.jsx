@@ -13,6 +13,26 @@ const FALLBACK_DATA = {
     { q: "Qu'est-ce qu'un lien 'shortener' (bit.ly) cache souvent ?", options: ["Une réduction de prix", "L'URL réelle de destination", "Un virus automatique"], correct: 1 },
     { q: "Une icône de cadenas (HTTPS) garantit-elle que le site est honnête ?", options: ["Oui, c'est sécurisé", "Non, cela crypte juste les données", "Seulement sur mobile"], correct: 1 },
     { q: "Quel est le signal le plus fiable d'un phishing ?", options: ["L'absence de logo", "Les fautes d'orthographe", "L'adresse email de l'expéditeur incohérente"], correct: 2 }
+  ],
+  links: [
+    {
+      id: 1,
+      url: 'https://secure.amazon.fr.compte-verification-login.com',
+      verdict: 'suspicious',
+      clues: ['Nom de marque trompeur dans un sous-domaine', 'Domaine principal non officiel', 'Mot-clé de connexion anxiogène']
+    },
+    {
+      id: 2,
+      url: 'https://www.impots.gouv.fr',
+      verdict: 'safe',
+      clues: ['Domaine officiel gouvernemental', 'URL courte et cohérente', 'Aucune redirection suspecte visible']
+    },
+    {
+      id: 3,
+      url: 'http://paypal-support-account-check.net/login',
+      verdict: 'suspicious',
+      clues: ['HTTP non chiffré', 'Domaine non PayPal', 'Vocabulaire orienté vol d’identifiants']
+    }
   ]
 };
 
@@ -132,6 +152,7 @@ export default function App() {
   
   const [scenarios, setScenarios] = useState(FALLBACK_DATA.scenarios);
   const [quiz, setQuiz] = useState(FALLBACK_DATA.quiz);
+  const [links, setLinks] = useState(FALLBACK_DATA.links);
   
   const [currentScenario, setCurrentScenario] = useState(0);
   const [quizIndex, setQuizIndex] = useState(0);
@@ -139,6 +160,8 @@ export default function App() {
   const [feedback, setFeedback] = useState(null);
   const [showScore, setShowScore] = useState(false);
   const [selectedQuizOption, setSelectedQuizOption] = useState(null);
+  const [currentLinkIndex, setCurrentLinkIndex] = useState(0);
+  const [selectedLinkVerdict, setSelectedLinkVerdict] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -148,8 +171,10 @@ export default function App() {
           setIsOnline(true);
           const s = await fetch(`${API_BASE}/api/scenarios`).then(res => res.json());
           const q = await fetch(`${API_BASE}/api/quiz`).then(res => res.json());
+          const l = await fetch(`${API_BASE}/api/links`).then(res => res.json());
           if (s && s.length > 0) setScenarios(s);
           if (q && q.length > 0) setQuiz(q);
+          if (l && l.length > 0) setLinks(l);
         }
       } catch (e) {
         setIsOnline(false);
@@ -220,6 +245,25 @@ export default function App() {
     setScore(0);
   };
 
+  const handleLinkInspection = (verdict) => {
+    const item = links[currentLinkIndex];
+    if (!item || selectedLinkVerdict !== null) return;
+
+    setSelectedLinkVerdict(verdict);
+
+    if (item.verdict === verdict) {
+      setFeedback({ msg: `✅ Bonne analyse : ${item.clues.join(', ')}`, type: 'success' });
+    } else {
+      setFeedback({ msg: `❌ Analyse incorrecte : ${item.clues.join(', ')}`, type: 'error' });
+    }
+
+    setTimeout(() => {
+      setFeedback(null);
+      setSelectedLinkVerdict(null);
+      setCurrentLinkIndex((prev) => (prev + 1) % links.length);
+    }, 3500);
+  };
+
   // --- PAGE D'ATTERRISSAGE (LANDING PAGE) ---
   if (!started) {
     return (
@@ -248,6 +292,7 @@ export default function App() {
   // --- APPLICATION PRINCIPALE ---
   const currentScenarioData = scenarios[currentScenario] || FALLBACK_DATA.scenarios[0];
   const currentQuizData = quiz[quizIndex] || FALLBACK_DATA.quiz[0];
+  const currentLinkData = links[currentLinkIndex] || FALLBACK_DATA.links[0];
 
   return (
     <div className="app-container fade-in">
@@ -257,6 +302,7 @@ export default function App() {
         </div>
         <nav className="nav">
           <button onClick={() => setTab('simulation')} className={tab === 'simulation' ? 'active' : ''}>Simulation</button>
+          <button onClick={() => setTab('link-inspection')} className={tab === 'link-inspection' ? 'active' : ''}>Link Inspection</button>
           <button onClick={() => setTab('quiz')} className={tab === 'quiz' ? 'active' : ''}>Quiz Interactif</button>
           <button onClick={() => setTab('checklist')} className={tab === 'checklist' ? 'active' : ''}>Checklist</button>
         </nav>
@@ -353,6 +399,39 @@ export default function App() {
                 </div>
               </div>
             )}
+          </section>
+        )}
+
+        {tab === 'link-inspection' && (
+          <section className="section-center">
+            <h2 className="section-title">Inspection de lien</h2>
+            <div className="shimmer-frame">
+              <div className="link-card">
+                <p className="link-subtitle">
+                  Analysez l'URL suivante avant de cliquer. Décidez si elle est sûre ou suspecte.
+                </p>
+                <div className="link-url-box">
+                  <code>{currentLinkData.url}</code>
+                </div>
+
+                <div className="email-actions">
+                  <button
+                    className={`btn btn-safe glow-hover ${selectedLinkVerdict ? 'link-disabled' : ''}`}
+                    onClick={() => handleLinkInspection('safe')}
+                    disabled={selectedLinkVerdict !== null}
+                  >
+                    Lien sûr
+                  </button>
+                  <button
+                    className={`btn btn-danger glow-hover ${selectedLinkVerdict ? 'link-disabled' : ''}`}
+                    onClick={() => handleLinkInspection('suspicious')}
+                    disabled={selectedLinkVerdict !== null}
+                  >
+                    Lien suspect
+                  </button>
+                </div>
+              </div>
+            </div>
           </section>
         )}
 
